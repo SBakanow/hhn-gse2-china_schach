@@ -32,18 +32,34 @@ public class Elefant extends Spielfigur {
     
     public boolean istBewegungErlaubt(Schnittpunkt ziel) {
         boolean result = false;
-        if (position.getPunkttyp() == Punkttyp.FLUSS
-            && (position.getZeile() - ziel.getZeile() == -2)
-            && ((int)position.getSpalte() - ziel.getSpalte() == -2)) {
-            setPosition();
-            result = true;
-            position = ziel;
-        } else if (Math.abs(position.getZeile() - ziel.getZeile()) == 2 
-            &&  Math.abs(((int)position.getSpalte() - ziel.getSpalte())) == 2
-            && position.getPunkttyp() != Punkttyp.FLUSS) {
-            setPosition();
-            result = true;
-            position = ziel;
+        if(!farbeIstRot) {
+            if (position.getPunkttyp() == Punkttyp.FLUSS
+                && (position.getZeile() - ziel.getZeile() == -2)
+                && ((int)position.getSpalte() - ziel.getSpalte() == -2)) {
+                setPosition();
+                result = true;
+                position = ziel;
+            } else if (Math.abs(position.getZeile() - ziel.getZeile()) == 2 
+                &&  Math.abs(((int)position.getSpalte() - ziel.getSpalte())) == 2
+                && position.getPunkttyp() != Punkttyp.FLUSS) {
+                setPosition();
+                result = true;
+                position = ziel;
+            }
+        } else {
+            if (position.getPunkttyp() == Punkttyp.FLUSS
+                && (position.getZeile() - ziel.getZeile() == 2)
+                && ((int)position.getSpalte() - ziel.getSpalte() == 2)) {
+                setPosition();
+                result = true;
+                position = ziel;
+            } else if (Math.abs(position.getZeile() - ziel.getZeile()) == 2 
+                &&  Math.abs(((int)position.getSpalte() - ziel.getSpalte())) == 2
+                && position.getPunkttyp() != Punkttyp.FLUSS) {
+                setPosition();
+                result = true;
+                position = ziel;
+            }
         }
         return result;
     }

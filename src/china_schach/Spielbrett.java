@@ -39,6 +39,9 @@ public class Spielbrett extends World {
         Elefant elefant = new Elefant(false);
         addObject(elefant,243,947);
         elefant.setPosition();
+        Elefant elefant2 = new Elefant(true);
+        addObject(elefant2,652,48);
+        elefant2.setPosition();
     }
 
     /**
