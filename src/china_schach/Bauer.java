@@ -37,20 +37,20 @@ public class Bauer extends Spielfigur {
     public boolean istBewegungErlaubt(Schnittpunkt start, Schnittpunkt ziel) {
         if(farbeIstRot) {
             if(ziel.getZeile() <= 4) {
-                if(Math.abs(start.getSpalte() - ziel.getSpalte()) == 1 && start.getZeile() - ziel.getZeile() == 0) {
+                if(Math.abs(start.getSpalte() - ziel.getSpalte()) == 1 && start.getZeile() == ziel.getZeile()) {
                 return true;
                 }
             }   
-            if(start.getZeile() - ziel.getZeile() == 1 && start.getSpalte() - ziel.getSpalte() == 0) {
+            if(start.getZeile() - ziel.getZeile() == 1 && start.getSpalte() == ziel.getSpalte()) {
                 return true;
             }
         } else {
             if(ziel.getZeile() >= 5) {
-                if(Math.abs(start.getSpalte() - ziel.getSpalte()) == 1 && start.getZeile() - ziel.getZeile() == 0) {
+                if(Math.abs(start.getSpalte() - ziel.getSpalte()) == 1 && start.getZeile() == ziel.getZeile()) {
                 return true;
                 }
             }   
-            if(start.getZeile() - ziel.getZeile() == -1 && start.getSpalte() - ziel.getSpalte() == 0) {
+            if(start.getZeile() - ziel.getZeile() == -1 && start.getSpalte() == ziel.getSpalte()) {
                 return true;
             } 
         }
