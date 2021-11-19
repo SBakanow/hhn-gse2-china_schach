@@ -52,16 +52,16 @@ public class Spielbrett extends World {
             for (int y = 0; y < 10; y++) {
                 if(y == 0 || y == 8) {
                     if(x >= 3 && x <= 5) {
-                        dieSchnittpunkte[x][y] = new Schnittpunkt((char)(Character.forDigit('a', 10)+x), y, true, Punkttyp.FESTUNG);
+                        dieSchnittpunkte[x][y] = new Schnittpunkt((char)(Character.getNumericValue('a')+x), y, true, Punkttyp.FESTUNG);
                     } else {
-                        dieSchnittpunkte[x][y] = new Schnittpunkt((char)(Character.forDigit('a', 10)+x), y, true, Punkttyp.NORMAL);
+                        dieSchnittpunkte[x][y] = new Schnittpunkt((char)(Character.getNumericValue('a')+x), y, true, Punkttyp.NORMAL);
                     }
                 } else if (y == 4 || y == 5 ) {
-                    dieSchnittpunkte[x][y] = new Schnittpunkt((char)(Character.forDigit('a', 10)+x), y, false, Punkttyp.FLUSS);
+                    dieSchnittpunkte[x][y] = new Schnittpunkt((char)(Character.getNumericValue('a')+x), y, false, Punkttyp.FLUSS);
                 } else if ((x >= 3 && x <= 5) && ((y <= 2) || (y >= 7))) {
-                    dieSchnittpunkte[x][y] = new Schnittpunkt((char)(Character.forDigit('a', 10)+x), y, false, Punkttyp.FESTUNG);
+                    dieSchnittpunkte[x][y] = new Schnittpunkt((char)(Character.getNumericValue('a')+x), y, false, Punkttyp.FESTUNG);
                 } else {
-                    dieSchnittpunkte[x][y] = new Schnittpunkt((char)(Character.forDigit('a', 10)+x), y, false, Punkttyp.NORMAL);
+                    dieSchnittpunkte[x][y] = new Schnittpunkt((char)(Character.getNumericValue('a')+x), y, false, Punkttyp.NORMAL);
                 }
             }
         }
