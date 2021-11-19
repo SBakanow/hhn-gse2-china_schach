@@ -26,8 +26,7 @@ public class Bauer extends Spielfigur {
             setLocation(((Actor)ziel).getX(), ((Actor)ziel).getY());
             oldX = getX();
             oldY = getY();
-        }
-        else {
+        } else {
             setLocation(oldX, oldY);   
             oldX = getX();
             oldY = getY();
