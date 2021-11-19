@@ -4,7 +4,7 @@ public class Spielbrett extends World {
     private Spieler[] dieSpieler;
     private Schnittpunkt[][] dieSchnittpunkte = new Schnittpunkt[9][10];
     final int offsetX = 50;
-    final int offsetY = 50;
+    final int offsetY = 47;
     final int scalingY = 100;
     final int scalingX = 100;
 
