@@ -22,7 +22,7 @@ public class Bauer extends Spielfigur {
     }
     
     public void bewegen(Schnittpunkt ziel) {
-        if(ziel != null && istBewegungErlaubt(position, ziel)) {
+        if(ziel != null && istBewegungErlaubt(ziel)) {
             setLocation(((Actor)ziel).getX(), ((Actor)ziel).getY());
             oldX = getX();
             oldY = getY();
@@ -34,32 +34,26 @@ public class Bauer extends Spielfigur {
         }
     }
     
-    public boolean istBewegungErlaubt(Schnittpunkt start, Schnittpunkt ziel) {
+    public boolean istBewegungErlaubt(Schnittpunkt ziel) {
         if(farbeIstRot) {
             if(ziel.getZeile() <= 4) {
-                if(Math.abs(start.getSpalte() - ziel.getSpalte()) == 1 && start.getZeile() == ziel.getZeile()) {
+                if(Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 && position.getZeile() == ziel.getZeile()) {
                 return true;
                 }
             }   
-            if(start.getZeile() - ziel.getZeile() == 1 && start.getSpalte() == ziel.getSpalte()) {
+            if(position.getZeile() - ziel.getZeile() == 1 && position.getSpalte() == ziel.getSpalte()) {
                 return true;
             }
         } else {
             if(ziel.getZeile() >= 5) {
-                if(Math.abs(start.getSpalte() - ziel.getSpalte()) == 1 && start.getZeile() == ziel.getZeile()) {
+                if(Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 && position.getZeile() == ziel.getZeile()) {
                 return true;
                 }
             }   
-            if(start.getZeile() - ziel.getZeile() == -1 && start.getSpalte() == ziel.getSpalte()) {
+            if(position.getZeile() - ziel.getZeile() == -1 && position.getSpalte() == ziel.getSpalte()) {
                 return true;
             } 
         }
         return false;
-    }
-
-    public void setPosition() {
-        oldX = getX();
-        oldY = getY();
-        position = (Schnittpunkt) getOneObjectAtOffset(0, 0, Schnittpunkt.class);
     }
 }
