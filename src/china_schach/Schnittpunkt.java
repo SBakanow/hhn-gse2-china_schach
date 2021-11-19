@@ -14,6 +14,13 @@ public class Schnittpunkt extends Actor{
         this.spalte = spalte;
         this.startpunkt = startpunkt;
         this.punkttyp = punkttyp;
+        if(punkttyp == Punkttyp.FESTUNG) {
+            setImage("red-draught.png");
+        } else if (punkttyp == Punkttyp.FLUSS){
+            setImage("yellow-draught.png");
+        } else {
+            setImage("blue-draught.png");
+        }
     }
     
     public void setSpielfigur() {
