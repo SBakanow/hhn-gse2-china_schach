@@ -6,4 +6,6 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=ziel
 comment3.target=void\ bewegen(Schnittpunkt)
-numComments=4
+comment4.params=ziel
+comment4.target=boolean\ istBewegungErlaubt(Schnittpunkt)
+numComments=5

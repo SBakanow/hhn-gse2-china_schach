@@ -32,12 +32,13 @@ public class Spielbrett extends World {
         }
         Bauer bauer2 = new Bauer(true);
         addObject(bauer2,649,647);
-        bauer2.setLocation(649,647);
         bauer2.setPosition();
         Bauer bauer3 = new Bauer(false);
         addObject(bauer3,249,346);
-        bauer3.setLocation(249,346);
         bauer3.setPosition();
+        Elefant elefant = new Elefant(false);
+        addObject(elefant,243,947);
+        elefant.setPosition();
     }
 
     /**

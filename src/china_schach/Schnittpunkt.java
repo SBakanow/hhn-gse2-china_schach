@@ -27,6 +27,10 @@ public class Schnittpunkt extends Actor{
         
     }
     
+    public Punkttyp getPunkttyp() {
+        return punkttyp;
+    }
+    
     public int getZeile() {
         return zeile;
     }

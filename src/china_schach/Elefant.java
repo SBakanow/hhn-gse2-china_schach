@@ -1,13 +1,11 @@
 import greenfoot.*;
 public class Elefant extends Spielfigur {
-    int oldX;
-    int oldY;
     public Elefant(boolean farbeIstRot) {
         super(farbeIstRot);
         if(farbeIstRot)
-            setImage("image/RotBauer");
+            setImage("English-Elephant-Red.png");
         else
-            setImage("image/SchwarzBauer");
+            setImage("English-Elephant-Black.png");
     }
     
     public void act() {
@@ -21,14 +19,32 @@ public class Elefant extends Spielfigur {
     }
     
     public void bewegen(Schnittpunkt ziel) {
-        if(ziel != null) {
+        if (ziel != null && istBewegungErlaubt(ziel)) {
             setLocation(((Actor)ziel).getX(), ((Actor)ziel).getY());
             oldX = getX();
             oldY = getY();
         } else {
-            setLocation(oldX, oldY);   
+            setLocation(oldX, oldY);
             oldX = getX();
             oldY = getY();
         }
+    }
+    
+    public boolean istBewegungErlaubt(Schnittpunkt ziel) {
+        boolean result = false;
+        if (position.getPunkttyp() == Punkttyp.FLUSS
+            && (position.getZeile() - ziel.getZeile() == -2)
+            && ((int)position.getSpalte() - ziel.getSpalte() == -2)) {
+            setPosition();
+            result = true;
+            position = ziel;
+        } else if (Math.abs(position.getZeile() - ziel.getZeile()) == 2 
+            &&  Math.abs(((int)position.getSpalte() - ziel.getSpalte())) == 2
+            && position.getPunkttyp() != Punkttyp.FLUSS) {
+            setPosition();
+            result = true;
+            position = ziel;
+        }
+        return result;
     }
 }
