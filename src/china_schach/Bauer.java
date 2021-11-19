@@ -34,7 +34,9 @@ public class Bauer extends Spielfigur {
     public boolean istBewegungErlaubt(Schnittpunkt ziel) {
         boolean ergebnis = false;
         if(farbeIstRot) {
-            if(ziel.getZeile() == 4) {
+            if(ziel.getZeile() <= 4) {
+                System.out.println(Math.abs(position.getSpalte() - ziel.getSpalte()));
+                System.out.println(position.getZeile() == ziel.getZeile());
                 if(Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 && position.getZeile() == ziel.getZeile()) {
                 ergebnis = true;
                 }
@@ -43,7 +45,7 @@ public class Bauer extends Spielfigur {
                 ergebnis = true;
             }
         } else {
-            if(ziel.getZeile() == 5) {
+            if(ziel.getZeile() <= 5) {
                 if(Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 && position.getZeile() == ziel.getZeile()) {
                 ergebnis = true;
                 }
