@@ -1,8 +1,8 @@
 import greenfoot.*;
 public class Bauer extends Spielfigur {
     
-        int oldX;
-        int oldY;
+    int oldX;
+    int oldY;
     public Bauer(boolean farbeIstRot) {
         super(farbeIstRot);
         if(farbeIstRot)
@@ -12,23 +12,25 @@ public class Bauer extends Spielfigur {
     }
     
     public void act() {
-        oldX = getX();
-        oldY = getY();
         if(Greenfoot.mouseDragged(this)) {
             setLocation(Greenfoot.getMouseInfo().getX(),
                         Greenfoot.getMouseInfo().getY());
-            if(Greenfoot.mouseDragEnded(this)) {
-                bewegen((Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class));
-            }
+        }
+        if(Greenfoot.mouseDragEnded(this)) {
+            bewegen((Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class));
         }
     }
     
     public void bewegen(Schnittpunkt ziel) {
-        if(ziel == null) {
+        if(ziel != null) {
             setLocation(((Actor)ziel).getX(), ((Actor)ziel).getY());
+            oldX = getX();
+            oldY = getY();
         }
         else {
-            setLocation(oldX, oldY);
+            setLocation(oldX, oldY);   
+            oldX = getX();
+            oldY = getY();
         }
     }
 }
