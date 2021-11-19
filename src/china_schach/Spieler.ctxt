@@ -2,5 +2,5 @@
 comment0.target=Spieler
 comment1.params=name\ hatRoteSpielfiguren
 comment1.target=Spieler(java.lang.String,\ boolean)
-comment1.text=\r\n\ \r\n\ @param\ name\r\n\ @param\ hatRoteSpielfiguren\r\n
+comment1.text=\n\ \n\ @param\ name\n\ @param\ hatRoteSpielfiguren\n
 numComments=2

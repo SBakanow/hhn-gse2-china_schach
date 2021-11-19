@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Bauer
+comment1.params=farbeIstRot
+comment1.target=Bauer(boolean)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=ziel
+comment3.target=void\ bewegen(Schnittpunkt)
+numComments=4

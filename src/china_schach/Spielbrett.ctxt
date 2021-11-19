@@ -2,5 +2,11 @@
 comment0.target=Spielbrett
 comment1.params=
 comment1.target=Spielbrett()
-comment1.text=\r\n\ \r\n\ @param\ breite\r\n\ @param\ h\u00F6he\r\n\ @param\ zellenGr\u00F6\u00DFe\r\n
-numComments=2
+comment1.text=\n\ \n\ @param\ breite\n\ @param\ h\u00F6he\n\ @param\ zellenGr\u00F6\u00DFe\n
+comment2.params=
+comment2.target=void\ prepare()
+comment2.text=\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\n
+comment3.params=
+comment3.target=void\ initSchnittpunkte()
+comment3.text=\n\ Initialisiere\ die\ Schnittpunkte\n
+numComments=4
