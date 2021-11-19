@@ -23,6 +23,7 @@ public class Bauer extends Spielfigur {
             setLocation(((Actor)ziel).getX(), ((Actor)ziel).getY());
             oldX = getX();
             oldY = getY();
+            setPosition();
         } else {
             setLocation(oldX, oldY);   
             oldX = getX();
@@ -35,28 +36,20 @@ public class Bauer extends Spielfigur {
         if(farbeIstRot) {
             if(ziel.getZeile() == 4) {
                 if(Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 && position.getZeile() == ziel.getZeile()) {
-                setPosition();
                 ergebnis = true;
-                position = ziel;
                 }
             }   
             if(position.getZeile() - ziel.getZeile() == 1 && position.getSpalte() == ziel.getSpalte()) {
-                setPosition();
                 ergebnis = true;
-                position = ziel;
             }
         } else {
             if(ziel.getZeile() == 5) {
                 if(Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 && position.getZeile() == ziel.getZeile()) {
-                setPosition();
                 ergebnis = true;
-                position = ziel;
                 }
             }   
             if(position.getZeile() - ziel.getZeile() == -1 && position.getSpalte() == ziel.getSpalte()) {
-                setPosition();
                 ergebnis = true;
-                position = ziel;
             } 
         }
         return ergebnis;
