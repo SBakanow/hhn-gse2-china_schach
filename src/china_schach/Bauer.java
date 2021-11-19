@@ -1,8 +1,5 @@
 import greenfoot.*;
-public class Bauer extends Spielfigur {
-    
-    int oldX;
-    int oldY;
+public class Bauer extends Spielfigur { 
     public Bauer(boolean farbeIstRot) {
         super(farbeIstRot);
         if(farbeIstRot)
@@ -26,7 +23,6 @@ public class Bauer extends Spielfigur {
             setLocation(((Actor)ziel).getX(), ((Actor)ziel).getY());
             oldX = getX();
             oldY = getY();
-            setPosition();
         } else {
             setLocation(oldX, oldY);   
             oldX = getX();
@@ -35,25 +31,34 @@ public class Bauer extends Spielfigur {
     }
     
     public boolean istBewegungErlaubt(Schnittpunkt ziel) {
+        boolean ergebnis = false;
         if(farbeIstRot) {
             if(ziel.getZeile() <= 4) {
                 if(Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 && position.getZeile() == ziel.getZeile()) {
-                return true;
+                setPosition();
+                ergebnis = true;
+                position = ziel;
                 }
             }   
             if(position.getZeile() - ziel.getZeile() == 1 && position.getSpalte() == ziel.getSpalte()) {
-                return true;
+                setPosition();
+                ergebnis = true;
+                position = ziel;
             }
         } else {
             if(ziel.getZeile() >= 5) {
                 if(Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 && position.getZeile() == ziel.getZeile()) {
-                return true;
+                setPosition();
+                ergebnis = true;
+                position = ziel;
                 }
             }   
             if(position.getZeile() - ziel.getZeile() == -1 && position.getSpalte() == ziel.getSpalte()) {
-                return true;
+                setPosition();
+                ergebnis = true;
+                position = ziel;
             } 
         }
-        return false;
+        return ergebnis;
     }
 }
