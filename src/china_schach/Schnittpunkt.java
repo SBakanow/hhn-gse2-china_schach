@@ -26,4 +26,12 @@ public class Schnittpunkt extends Actor{
     public void setSpielfigur() {
         
     }
+    
+    public int getZeile() {
+        return zeile;
+    }
+    
+    public char getSpalte() {
+        return spalte;
+    }
 }

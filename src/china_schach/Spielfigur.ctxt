@@ -2,8 +2,8 @@
 comment0.target=Spielfigur
 comment1.params=ziel
 comment1.target=void\ bewegen(Schnittpunkt)
-comment1.text=\n\ \n\ @param\ ziel\n
+comment1.text=\r\n\ \r\n\ @param\ ziel\r\n
 comment2.params=farbeIstRot
 comment2.target=Spielfigur(boolean)
-comment2.text=\n\ \n\ @param\ farbeIstRot\n
+comment2.text=\r\n\ \r\n\ @param\ farbeIstRot\r\n
 numComments=3

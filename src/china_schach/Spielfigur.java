@@ -21,5 +21,4 @@ public abstract class Spielfigur extends Actor {
         // TODO - implement Spielfigur.Spielfigur
         this.farbeIstRot = farbeIstRot;
     }
-
 }
