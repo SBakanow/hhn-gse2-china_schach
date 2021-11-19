@@ -1,7 +1,7 @@
 #Greenfoot project file
 class.Bauer.image=snowman.png
 class.Schnittpunkt.image=blue-draught.png
-class.Spielbrett.image=Xiangqi_board.png
+class.Spielbrett.image=Xiangqi_board_final.png
 dependency1.from=Spielbrett
 dependency1.to=Schnittpunkt
 dependency1.type=UsesDependency
@@ -61,8 +61,8 @@ dependency9.to=Schnittpunkt
 dependency9.type=UsesDependency
 editor.fx.0.height=1025
 editor.fx.0.width=1792
-editor.fx.0.x=0
-editor.fx.0.y=25
+editor.fx.0.x=-1
+editor.fx.0.y=26
 height=1025
 package.numDependencies=19
 package.numTargets=15
@@ -189,4 +189,4 @@ version=3.0.0
 width=1792
 world.lastInstantiated=Spielbrett
 xPosition=0
-yPosition=25
+yPosition=26

@@ -12,12 +12,15 @@ public class Spielbrett extends World {
      * @param zellenGröße
      */
     public Spielbrett() {
-        super(820, 920, 1);
+        super(900, 996, 1);
         initSchnittpunkte();
         prepare();
     }
 
-
+    final int offsetX = 50;
+    final int offsetY = 50;
+    final int scalingY = 100;
+    final int scalingX = 100;
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -26,11 +29,12 @@ public class Spielbrett extends World {
     {
         for(int i = 0; i < 9; i++) {
             for (int j = 0; j < 10; j++) {
-                addObject(dieSchnittpunkte[i][j], i*100+10, j*100+10);
+                addObject(dieSchnittpunkte[i][j], i*scalingX+offsetX, j*scalingY+offsetY);
             }
         }
         Bauer bauer = new Bauer(true);
         addObject(bauer,606,402);
+        bauer.setLocation(546,445);
     }
     
     /**
