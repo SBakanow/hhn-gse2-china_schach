@@ -24,8 +24,6 @@ public class Elefant extends Spielfigur {
             setLocation(((Actor)ziel).getX(), ((Actor)ziel).getY());
             oldX = getX();
             oldY = getY();
-            if (getOneIntersectingObject(Spielfigur.class) != null)
-                ChinaSchachKontrolle.prüfeGeschlagen((Spielfigur)getOneIntersectingObject(Spielfigur.class));
         } else {
             setLocation(oldX, oldY);
             oldX = getX();

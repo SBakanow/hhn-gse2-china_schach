@@ -31,8 +31,9 @@ public abstract class Spielfigur extends Actor {
     public void setPosition() {
         oldX = getX();
         oldY = getY();
-        position = (Schnittpunkt) getOneObjectAtOffset(0, 0, Schnittpunkt.class);
-        
-        int x = 0;
+        if(position != null)
+            position.removeSpielfigur();
+        position = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
+        position.setSpielfigur(this);
     }
 }

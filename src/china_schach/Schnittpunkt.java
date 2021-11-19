@@ -23,8 +23,13 @@ public class Schnittpunkt extends Actor{
         }
     }
     
-    public void setSpielfigur() {
-        
+    public void setSpielfigur(Spielfigur figur) {
+        getWorld().removeObject(dieSpielfigur);
+        dieSpielfigur = figur;
+    }
+    
+    public void removeSpielfigur() {
+        dieSpielfigur = null;
     }
     
     public Punkttyp getPunkttyp() {
