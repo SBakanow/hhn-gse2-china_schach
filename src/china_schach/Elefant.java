@@ -35,7 +35,7 @@ public class Elefant extends Spielfigur {
         if(!farbeIstRot) {
             if (position.getPunkttyp() == Punkttyp.FLUSS
                 && (position.getZeile() - ziel.getZeile() == -2)
-                && ((int)position.getSpalte() - ziel.getSpalte() == -2)) {
+                && Math.abs((int)position.getSpalte() - ziel.getSpalte()) == 2) {
                 setPosition();
                 result = true;
                 position = ziel;
@@ -49,7 +49,7 @@ public class Elefant extends Spielfigur {
         } else {
             if (position.getPunkttyp() == Punkttyp.FLUSS
                 && (position.getZeile() - ziel.getZeile() == 2)
-                && ((int)position.getSpalte() - ziel.getSpalte() == 2)) {
+                && Math.abs((int)position.getSpalte() - ziel.getSpalte()) == 2) {
                 setPosition();
                 result = true;
                 position = ziel;
