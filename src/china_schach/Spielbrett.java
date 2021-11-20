@@ -42,6 +42,19 @@ public class Spielbrett extends World {
         Elefant elefant2 = new Elefant(false);
         addObject(elefant2,652,48);
         elefant2.setPosition();
+        
+        Turm turmLR = new Turm(false);
+        addObject(turmLR,50,50);
+        turmLR.setPosition();
+        Turm turmRR = new Turm(false);
+        addObject(turmRR,850,50);
+        turmRR.setPosition();
+        Turm turmLB = new Turm(true);
+        addObject(turmLB,50,950);
+        turmLB.setPosition();
+        Turm turmRB = new Turm(true);
+        addObject(turmRB,850,950);
+        turmRB.setPosition();
     }
 
     /**

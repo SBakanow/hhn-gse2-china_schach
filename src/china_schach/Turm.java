@@ -1,33 +1,44 @@
 import greenfoot.*;
 public class Turm extends Spielfigur {
-    int oldX;
-    int oldY;
+
+
     public Turm(boolean farbeIstRot) {
         super(farbeIstRot);
         if(farbeIstRot)
-            setImage("image/RotBauer");
+            setImage("images/English-Rook-Red.png");
         else
-            setImage("image/SchwarzBauer");
+            setImage("images/English-Rook-Black.png");
     }
     public void act() {
         if(Greenfoot.mouseDragged(this)) {
             setLocation(Greenfoot.getMouseInfo().getX(),
-                        Greenfoot.getMouseInfo().getY());
+                Greenfoot.getMouseInfo().getY());
         }
         if(Greenfoot.mouseDragEnded(this)) {
             bewegen((Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class));
         }
     }
-    
+
     public void bewegen(Schnittpunkt ziel) {
-        if(ziel != null) {
+        if(ziel != null && validMove(ziel)) {
             setLocation(((Actor)ziel).getX(), ((Actor)ziel).getY());
             oldX = getX();
             oldY = getY();
         } else {
-            setLocation(oldX, oldY);   
+            setLocation(oldX, oldY);
             oldX = getX();
             oldY = getY();
         }
+    }
+    public boolean validMove(Schnittpunkt ziel){
+        boolean move = false;
+        if (position.getZeile() != ziel.getZeile() ^ position.getSpalte() != ziel.getSpalte()){
+            setPosition();
+            position=ziel;
+            move = true;
+        }else{
+
+        }
+        return move;
     }
 }
