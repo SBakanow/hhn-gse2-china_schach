@@ -55,6 +55,26 @@ public class Spielbrett extends World {
         Turm turmRB = new Turm(true);
         addObject(turmRB,850,950);
         turmRB.setPosition();
+
+        Kaiser kaiser = new Kaiser(true);
+        addObject(kaiser,450,947);
+        kaiser.setPosition();
+        Kaiser kaiser2 = new Kaiser(false);
+        addObject(kaiser2,450,48);
+        kaiser2.setPosition();
+
+        Mandarin mandarin = new Mandarin(true);
+        addObject(mandarin,350,947);
+        mandarin.setPosition();
+        Mandarin mandarin2 = new Mandarin(true);
+        addObject(mandarin2,550,947);
+        mandarin2.setPosition();
+        Mandarin mandarin3 = new Mandarin(false);
+        addObject(mandarin3,350,48);
+        mandarin3.setPosition();
+        Mandarin mandarin4 = new Mandarin(false);
+        addObject(mandarin4,550,48);
+        mandarin4.setPosition();
     }
 
     /**
