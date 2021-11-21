@@ -1,12 +1,23 @@
-public class Spiel {
 
-	private ChinaSchachKontrolle dieKontrollKlasse;
-	private Spieler[] dieSpieler;
-	private Spielbrett dasSpielbrett;
-	private Spielfigur[] dieSpielfiguren;
-	private Spielstand spielstand;
+public final class Spiel {
+    // Da ChinaSchachKontrolle sich als Singleton anbietet brauchen wir keine Variable => Discuss
+	//private final ChinaSchachKontrolle dieKontrollKlasse;
+	private final Spieler[] dieSpieler;
+	private final Spielbrett dasSpielbrett;
+	private final Spielfigur[] dieSpielfiguren;
+	private final Spielstand spielstand;
+
+    public Spiel() {
+        dieSpieler      = new Spieler[2];
+        spielbrett      = new Spielbrett();
+        dieSpielfiguren = new Spielfiguren[32];
+        spielstand      = Spielstand.UNKONFIGURIERT;
+		// TODO - implement Spiel.Spiel
+		throw new UnsupportedOperationException();
+	}
 
 	public void konfiguriereSpiel() {
+        spielstand = Spielstand.KONFIGURIERT;
 		// TODO - implement Spiel.konfiguriereSpiel
 		throw new UnsupportedOperationException();
 	}
@@ -17,18 +28,15 @@ public class Spiel {
 	}
 
 	public void starten() {
+        spielstand = Spielstand.LAUFEND;
 		// TODO - implement Spiel.starten
 		throw new UnsupportedOperationException();
 	}
 
 	public void beenden() {
+        spielstand = Spielstand.BEENDET;
 		// TODO - implement Spiel.beenden
 		throw new UnsupportedOperationException();
 	}
-
-	public Spiel() {
-		// TODO - implement Spiel.Spiel
-		throw new UnsupportedOperationException();
-	}
-
 }
+

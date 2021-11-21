@@ -1,26 +1,30 @@
+
 import greenfoot.*;
-public class Turm extends Spielfigur {
 
 
-    public Turm(boolean farbeIstRot) {
+public final class Turm extends Spielfigur {
+    public Turm(final boolean farbeIstRot) {
         super(farbeIstRot);
-        if(farbeIstRot)
+
+        if (farbeIstRot) {
             setImage("images/English-Rook-Red.png");
-        else
+        } else {
             setImage("images/English-Rook-Black.png");
-    }
-    public void act() {
-        if(Greenfoot.mouseDragged(this)) {
-            setLocation(Greenfoot.getMouseInfo().getX(),
-                Greenfoot.getMouseInfo().getY());
         }
-        if(Greenfoot.mouseDragEnded(this)) {
+    }
+
+    public void act() {
+        if (Greenfoot.mouseDragged(this)) {
+            setLocation(Greenfoot.getMouseInfo().getX(),
+                        Greenfoot.getMouseInfo().getY());
+        }
+        if (Greenfoot.mouseDragEnded(this)) {
             bewegen((Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class));
         }
     }
 
-    public void bewegen(Schnittpunkt ziel) {
-        if(ziel != null && validMove(ziel)) {
+    public void bewegen(final Schnittpunkt ziel) {
+        if (ziel != null && istBewegungErlaubt(ziel)) {
             setLocation(((Actor)ziel).getX(), ((Actor)ziel).getY());
             oldX = getX();
             oldY = getY();
@@ -30,15 +34,19 @@ public class Turm extends Spielfigur {
             oldY = getY();
         }
     }
-    public boolean validMove(Schnittpunkt ziel){
-        boolean move = false;
-        if (position.getZeile() != ziel.getZeile() ^ position.getSpalte() != ziel.getSpalte()){
-            setPosition();
-            position=ziel;
-            move = true;
-        }else{
 
+
+    private boolean istBewegungErlaubt(final Schnittpunkt ziel){
+        if (position.getZeile() != ziel.getZeile() ^
+            position.getSpalte() != ziel.getSpalte()) {
+            setPosition();
+            position = ziel;
+            return true;
+        } else {
+            // TODO
         }
-        return move;
+
+        return false;
     }
 }
+

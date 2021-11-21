@@ -1,39 +1,41 @@
+
 import greenfoot.*;
 
-public abstract class Spielfigur extends Actor {
 
-    protected Spieler besitzer;
+public abstract class Spielfigur extends Actor {
     protected Schnittpunkt position;
-    protected boolean farbeIstRot;
-    protected boolean geschlagen;
-    
     protected int oldX;
     protected int oldY;
+    protected boolean geschlagen;
+    protected final Spieler besitzer;
+    protected final boolean farbeIstRot;
 
     /**
-     * 
-     * @param ziel
+     * @param farbeIstRot Gibt an, ob die Spielfigur rot ist oder nicht.
      */
-    public abstract void bewegen(Schnittpunkt ziel);
-
-    /**
-     * 
-     * @param farbeIstRot
-     */
-    public Spielfigur(boolean farbeIstRot) {
+    public Spielfigur(final boolean farbeIstRot) {
         // TODO - implement Spielfigur.Spielfigur
         this.farbeIstRot = farbeIstRot;
     }
-    
+
+    /**
+     * @param ziel Ziel an dem die Spielfigur hin will.
+     */
+    public abstract void bewegen(final Schnittpunkt ziel);
+
     /**
      * Setze die Position der Spielfigur
      */
     public void setPosition() {
         oldX = getX();
         oldY = getY();
-        if(position != null)
+
+        if (position != null) {
             position.removeSpielfigur();
-        position = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
+        }
+
+        position = (Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class);
         position.setSpielfigur(this);
     }
 }
+
