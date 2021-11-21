@@ -23,9 +23,11 @@ public class Schnittpunkt extends Actor{
         }
     }
     
-    public void setSpielfigur(Spielfigur figur) {
+    public boolean setSpielfigur(Spielfigur figur) {
+        boolean result = false;
         getWorld().removeObject(dieSpielfigur);
         dieSpielfigur = figur;
+        return result;
     }
     
     public void removeSpielfigur() {

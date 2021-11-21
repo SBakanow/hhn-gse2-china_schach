@@ -3,6 +3,7 @@ public class Spielbrett extends World {
 
     private Spieler[] dieSpieler;
     private Schnittpunkt[][] dieSchnittpunkte = new Schnittpunkt[9][10];
+    private Spiel spiel = new Spiel(this);
     final int offsetX = 50;
     final int offsetY = 50;
     final int scalingY = 100;
@@ -18,6 +19,11 @@ public class Spielbrett extends World {
         super(900, 996, 1);
         initSchnittpunkte();
         prepare();
+        spiel.konfiguriereSpiel();
+    }
+    
+    public void act() {
+        
     }
 
     /**

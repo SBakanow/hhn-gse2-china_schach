@@ -22,7 +22,6 @@ public class ChinaSchachKontrolle {
 
     public ChinaSchachKontrolle() {
         // TODO - implement ChinaSchachKontrolle.ChinaSchachKontrolle
-        throw new UnsupportedOperationException();
     }
 
 }
