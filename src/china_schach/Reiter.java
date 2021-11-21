@@ -1,15 +1,13 @@
-
 import greenfoot.*;
-
 
 public final class Reiter extends Spielfigur {
     public Reiter(final boolean farbeIstRot) {
         super(farbeIstRot);
 
         if (farbeIstRot) {
-            setImage("image/RotBauer");
+            setImage("images/English-Horse-Red.png");
         } else {
-            setImage("image/SchwarzBauer");
+            setImage("images/English-Horse-Black.png");
         }
     }
 
@@ -36,8 +34,15 @@ public final class Reiter extends Spielfigur {
     }
 
 
-    private boolean istBewegungErlaubt(final Schnittpunkt ziel) {
-        // TODO
+    public boolean istBewegungErlaubt(final Schnittpunkt ziel) {
+        boolean ergebnis = false;
+            if ((Math.abs((int) position.getZeile() - ziel.getZeile()) == 2 && Math.abs((int) position.getSpalte() - ziel.getSpalte()) == 1) 
+                || Math.abs((int) position.getSpalte() - ziel.getSpalte()) == 2 && Math.abs((int) position.getZeile() - ziel.getZeile()) == 1) 
+            {
+                setPosition();
+                ergebnis = true;
+            }
+        return ergebnis;    
     }
 }
 
