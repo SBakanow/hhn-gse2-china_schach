@@ -1,4 +1,3 @@
-
 import greenfoot.*;
 
 
@@ -76,6 +75,19 @@ public final class Spielbrett extends World {
         final var mandarin4 = new Mandarin(false);
         addObject(mandarin4, 550, 48);
         mandarin4.setPosition();
+
+        final var reiter1 = new Reiter(true);
+        addObject(reiter1, 150, 947);
+        reiter1.setPosition();
+        final var reiter2 = new Reiter(true);
+        addObject(reiter2, 750, 947);
+        reiter2.setPosition();
+        final var reiter3 = new Reiter(false);
+        addObject(reiter3, 150, 48);
+        reiter3.setPosition();
+        final var reiter4 = new Reiter(false);
+        addObject(reiter4, 750, 48);
+        reiter4.setPosition();
     }
 
     /**
