@@ -1,48 +1,57 @@
+
 import greenfoot.*;
-public class Schnittpunkt extends Actor{
 
-    private Spielbrett dasSpielbrett;
+
+public final class Schnittpunkt extends Actor {
     private Spielfigur dieSpielfigur;
-    private int zeile;
-    private char spalte;
-    private boolean startpunkt;
-    private Punkttyp punkttyp;
+    private final int zeile;
+    private final char spalte;
+    private final boolean startpunkt;
+    private final Punkttyp punkttyp;
 
-    public Schnittpunkt(char spalte, int zeile, boolean startpunkt, Punkttyp punkttyp) {
+    public Schnittpunkt(final char spalte,
+                        final int zeile,
+                        final boolean startpunkt,
+                        final Punkttyp punkttyp) {
         // TODO - implement Schnittpunkt.Schnittpunkt
-        this.zeile = zeile;
-        this.spalte = spalte;
+        this.zeile      = zeile;
+        this.spalte     = spalte;
         this.startpunkt = startpunkt;
-        this.punkttyp = punkttyp;
-        if(punkttyp == Punkttyp.FESTUNG) {
-            setImage("red-draught.png");
-        } else if (punkttyp == Punkttyp.FLUSS){
-            setImage("yellow-draught.png");
-        } else {
-            setImage("blue-draught.png");
+        this.punkttyp   = punkttyp;
+
+        switch (punkttyp) {
+            case FESTUNG:   setImage("red-draught.png");    break;
+            case FLUSS:     setImage("yellow-draught.png"); break;
+            default:        setImage("blue-draught.png");   break;
         }
     }
     
     public boolean setSpielfigur(Spielfigur figur) {
         boolean result = false;
+
         getWorld().removeObject(dieSpielfigur);
         dieSpielfigur = figur;
         return result;
     }
-    
+
     public void removeSpielfigur() {
         dieSpielfigur = null;
     }
-    
-    public Punkttyp getPunkttyp() {
-        return punkttyp;
-    }
-    
+
     public int getZeile() {
         return zeile;
     }
-    
+
     public char getSpalte() {
         return spalte;
     }
+
+    public boolean getStartpunkt() {
+        return startpunkt;
+    }
+
+    public Punkttyp getPunkttyp() {
+        return punkttyp;
+    }
 }
+

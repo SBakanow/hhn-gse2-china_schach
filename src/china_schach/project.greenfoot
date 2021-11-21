@@ -6,42 +6,47 @@ dependency1.from=Spielbrett
 dependency1.to=Schnittpunkt
 dependency1.type=UsesDependency
 dependency10.from=Elefant
+<<<<<<< HEAD
 dependency10.to=Schnittpunkt
+=======
+dependency10.to=Punkttyp
+>>>>>>> c7cc4b71edf7eebdf3e2803b750785510ad22ad0
 dependency10.type=UsesDependency
-dependency11.from=Elefant
-dependency11.to=Punkttyp
+dependency11.from=Bauer
+dependency11.to=Schnittpunkt
 dependency11.type=UsesDependency
-dependency12.from=Bauer
+dependency12.from=Kaiser
 dependency12.to=Schnittpunkt
 dependency12.type=UsesDependency
-dependency13.from=Kaiser
+dependency13.from=Mandarin
 dependency13.to=Schnittpunkt
 dependency13.type=UsesDependency
-dependency14.from=Mandarin
+dependency14.from=Turm
 dependency14.to=Schnittpunkt
 dependency14.type=UsesDependency
-dependency15.from=Turm
-dependency15.to=Schnittpunkt
+dependency15.from=Schnittpunkt
+dependency15.to=Spielbrett
 dependency15.type=UsesDependency
 dependency16.from=Schnittpunkt
-dependency16.to=Spielbrett
+dependency16.to=Spielfigur
 dependency16.type=UsesDependency
 dependency17.from=Schnittpunkt
-dependency17.to=Spielfigur
+dependency17.to=Punkttyp
 dependency17.type=UsesDependency
-dependency18.from=Schnittpunkt
-dependency18.to=Punkttyp
+dependency18.from=ChinaSchachKontrolle
+dependency18.to=Spielfigur
 dependency18.type=UsesDependency
-dependency19.from=ChinaSchachKontrolle
-dependency19.to=Spielfigur
+dependency19.from=Spiel
+dependency19.to=ChinaSchachKontrolle
 dependency19.type=UsesDependency
 dependency2.from=Spielbrett
 dependency2.to=Spiel
 dependency2.type=UsesDependency
 dependency20.from=Spiel
-dependency20.to=ChinaSchachKontrolle
+dependency20.to=Spielbrett
 dependency20.type=UsesDependency
 dependency21.from=Spiel
+<<<<<<< HEAD
 dependency21.to=Spieler
 dependency21.type=UsesDependency
 dependency22.from=Spiel
@@ -56,6 +61,13 @@ dependency24.type=UsesDependency
 dependency25.from=Spieler
 dependency25.to=Spielbrett
 dependency25.type=UsesDependency
+=======
+dependency21.to=Spielstand
+dependency21.type=UsesDependency
+dependency22.from=Spieler
+dependency22.to=Spielbrett
+dependency22.type=UsesDependency
+>>>>>>> c7cc4b71edf7eebdf3e2803b750785510ad22ad0
 dependency3.from=Spielbrett
 dependency3.to=Bauer
 dependency3.type=UsesDependency
@@ -77,12 +89,21 @@ dependency8.type=UsesDependency
 dependency9.from=Reiter
 dependency9.to=Schnittpunkt
 dependency9.type=UsesDependency
+<<<<<<< HEAD
 editor.fx.0.height=0
 editor.fx.0.width=0
 editor.fx.0.x=0
 editor.fx.0.y=0
 height=1025
 package.numDependencies=25
+=======
+editor.fx.0.height=1025
+editor.fx.0.width=1792
+editor.fx.0.x=464
+editor.fx.0.y=83
+height=1181
+package.numDependencies=22
+>>>>>>> c7cc4b71edf7eebdf3e2803b750785510ad22ad0
 package.numTargets=15
 project.charset=UTF-8
 publish.hasSource=false
@@ -206,5 +227,10 @@ target9.y=0
 version=3.0.0
 width=1165
 world.lastInstantiated=Spielbrett
+<<<<<<< HEAD
 xPosition=0
 yPosition=25
+=======
+xPosition=968
+yPosition=109
+>>>>>>> c7cc4b71edf7eebdf3e2803b750785510ad22ad0

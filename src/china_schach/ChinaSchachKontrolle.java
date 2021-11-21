@@ -1,6 +1,8 @@
-public class ChinaSchachKontrolle {
 
-    static public boolean prüfeGeschlagen(Spielfigur figur) {
+public final class ChinaSchachKontrolle {
+    private static ChinaSchachKontrolle instance;
+
+    static public boolean prüfeGeschlagen(final Spielfigur figur) {
         // TODO - implement ChinaSchachKontrolle.prüfeGeschlagen
         throw new UnsupportedOperationException();
     }
@@ -20,8 +22,16 @@ public class ChinaSchachKontrolle {
         throw new UnsupportedOperationException();
     }
 
-    public ChinaSchachKontrolle() {
-        // TODO - implement ChinaSchachKontrolle.ChinaSchachKontrolle
+    public static ChinaSchachKontrolle getInstance() {
+        if (instance == null) {
+            instance = new ChinaSchachKontrolle();
+        }
+        return instance;
     }
 
+
+    private ChinaSchachKontrolle() {
+        // TODO - implement ChinaSchachKontrolle.ChinaSchachKontrolle
+    }
 }
+
