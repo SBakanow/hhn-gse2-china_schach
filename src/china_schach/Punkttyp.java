@@ -1,7 +1,6 @@
-
 public enum Punkttyp {
-	NORMAL,
-	FLUSS,
-	FESTUNG
+  NORMAL,
+  FLUSS,
+  FESTUNG
 }
 

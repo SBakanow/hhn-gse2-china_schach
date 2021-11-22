@@ -1,44 +1,44 @@
+import greenfoot.Actor;
 
-import greenfoot.*;
 public final class Geschütz extends Spielfigur {
 
 
-    public Geschütz(final boolean farbeIstRot) {
-        super(farbeIstRot);
+  public Geschütz(final Farbe farbe) {
+    super(farbe);
 
-        if (farbeIstRot) {
-            setImage("images/English-Cannon-Red.png");
-        } else {
-            setImage("images/English-Cannon-Black.png");
-        }
+    if (farbe == Farbe.ROT) {
+      setImage("English-Cannon-Red.png");
+    } else {
+      setImage("English-Cannon-Black.png");
+    }
+  }
+
+  public boolean bewegen(Schnittpunkt[][] schnittpunkte) {
+    Schnittpunkt ziel = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
+    if (ziel != null && istBewegungErlaubt(ziel)) {
+      setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
+      oldX = getX();
+      oldY = getY();
+    } else {
+      setLocation(oldX, oldY);
+      oldX = getX();
+      oldY = getY();
+    }
+    return false;
+  }
+
+
+  private boolean istBewegungErlaubt(final Schnittpunkt ziel) {
+    if (position.getZeile() != ziel.getZeile() ^
+        position.getSpalte() != ziel.getSpalte()) {
+      setPosition();
+      position = ziel;
+      return true;
+    } else {
+      // TODO
     }
 
-    public boolean bewegen(Schnittpunkt[][] schnittpunkte) {
-        Schnittpunkt ziel = (Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class);
-        if (ziel != null && istBewegungErlaubt(ziel)) {
-          setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
-          oldX = getX();
-          oldY = getY();
-        } else {
-          setLocation(oldX, oldY);
-          oldX = getX();
-          oldY = getY();
-        }
-        return false;
-    }
-    
-
-    private boolean istBewegungErlaubt(final Schnittpunkt ziel) {
-        if (position.getZeile() != ziel.getZeile() ^
-            position.getSpalte() != ziel.getSpalte()) {
-            setPosition();
-            position = ziel;
-            return true;
-        } else {
-            // TODO
-        }
-
-        return false;
-    }
+    return false;
+  }
 }
 

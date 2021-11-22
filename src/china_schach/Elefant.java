@@ -1,11 +1,9 @@
-import greenfoot.*;
-
-
 public final class Elefant extends Spielfigur {
-  public Elefant(final boolean farbeIstRot) {
-    super(farbeIstRot);
 
-    if (farbeIstRot) {
+  public Elefant(final Farbe farbe) {
+    super(farbe);
+
+    if (farbe == Farbe.ROT) {
       setImage("English-Elephant-Red.png");
     } else {
       setImage("English-Elephant-Black.png");
@@ -13,8 +11,8 @@ public final class Elefant extends Spielfigur {
   }
 
   public boolean bewegen(Schnittpunkt[][] schnittpunkte) {
-        Schnittpunkt ziel = (Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class);
-        return istBewegungErlaubt(ziel);
+    Schnittpunkt ziel = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
+    return istBewegungErlaubt(ziel);
         /*if (ziel != null && istBewegungErlaubt(ziel)) {
           setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
           oldX = getX();
@@ -24,7 +22,7 @@ public final class Elefant extends Spielfigur {
           oldX = getX();
           oldY = getY();
         }*/
-    }
+  }
 
 
   private boolean istBewegungErlaubt(final Schnittpunkt ziel) {
@@ -33,12 +31,12 @@ public final class Elefant extends Spielfigur {
     if (position.getPunkttyp() == Punkttyp.FLUSS &&
         (position.getZeile() - ziel.getZeile() == -2) &&
         Math.abs((int) position.getSpalte() - ziel.getSpalte()) == 2 &&
-        farbeIstRot) {
+        farbe) {
       result = true;
     } else if (position.getPunkttyp() == Punkttyp.FLUSS &&
         (position.getZeile() - ziel.getZeile() == 2) &&
         Math.abs((int) position.getSpalte() - ziel.getSpalte()) == 2 &&
-        !farbeIstRot) {
+        !farbe) {
       result = true;
     } else if (Math.abs(position.getZeile() - ziel.getZeile()) == 2 &&
         Math.abs(((int) position.getSpalte() - ziel.getSpalte())) == 2 &&
@@ -47,8 +45,8 @@ public final class Elefant extends Spielfigur {
     }
     return result;
   }
-  
-    
+
+
   /*public boolean iterateMoves(Schnittpunkt[][] schnittpunkte) {
       boolean result = false;
       Schnittpunkt ziel = (Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class);
@@ -66,8 +64,8 @@ public final class Elefant extends Spielfigur {
       return result;
   }*/
   private boolean istSpielfigurDazwischen(final Schnittpunkt ziel) {
-      
-      return false;
+
+    return false;
   }
 }
 
