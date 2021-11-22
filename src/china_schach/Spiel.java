@@ -32,6 +32,7 @@ public final class Spiel extends Actor {
         }
         if (actor != null) {
             if (Greenfoot.mouseDragged(null)) {
+                if(actor.
                 ((Actor)actor).setLocation(Greenfoot.getMouseInfo().getX(),
                         Greenfoot.getMouseInfo().getY());
             }

@@ -17,6 +17,8 @@ public abstract class Spielfigur extends Actor {
         this.farbeIstRot = farbeIstRot;
     }
     
+    public Farbe
+    
     /**
      * @param ziel Ziel an dem die Spielfigur hin will.
      */
