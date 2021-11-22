@@ -28,7 +28,7 @@ public final class Bauer extends Spielfigur {
   }
 
   private boolean istBewegungErlaubt(final Schnittpunkt ziel) {
-    if (farbe) {
+    if (farbe == Farbe.ROT) {
       if (ziel.getZeile() <= 4) {
         System.out.println(Math.abs(position.getSpalte() - ziel.getSpalte()));
         System.out.println(position.getZeile() == ziel.getZeile());

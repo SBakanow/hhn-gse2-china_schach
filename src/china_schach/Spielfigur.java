@@ -23,6 +23,9 @@ public abstract class Spielfigur extends Actor {
    */
   public abstract boolean bewegen(Schnittpunkt[][] schnittpunkte);
 
+  public Farbe getFarbe() {
+      return farbe;
+  }
 
   /**
    * Setze die Position der Spielfigur
@@ -30,7 +33,6 @@ public abstract class Spielfigur extends Actor {
   public void setPosition() {
     if (position != null) {
       position.removeSpielfigur();
-
     }
   }
 

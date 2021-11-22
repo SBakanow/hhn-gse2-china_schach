@@ -31,7 +31,6 @@ public final class Spiel extends Actor {
         actor.bewegen(dasSpielbrett.getSchnittpunkte());
         farbe = Farbe.ROT == farbe ? Farbe.SCHWARZ : Farbe.ROT;
       }
-      // TODO - implement Spiel.starten
     }
   }
 
@@ -44,23 +43,6 @@ public final class Spiel extends Actor {
   public void zurücksetzen() {
     // TODO - implement Spiel.zurücksetzen
     throw new UnsupportedOperationException();
-  }
-
-  public void starten() {
-    spielstand = Spielstand.LAUFEND;
-    if (Greenfoot.mousePressed(null)) {
-      actor = (Spielfigur) Greenfoot.getMouseInfo().getActor();
-    }
-    if (actor != null) {
-      if (Greenfoot.mouseDragged(null)) {
-        ((Actor) actor).setLocation(Greenfoot.getMouseInfo().getX(),
-            Greenfoot.getMouseInfo().getY());
-      }
-      if (Greenfoot.mouseDragEnded(null)) {
-        actor.bewegen(dasSpielbrett.getSchnittpunkte());
-      }
-      // TODO - implement Spiel.starten
-    }
   }
 
   public void beenden() {

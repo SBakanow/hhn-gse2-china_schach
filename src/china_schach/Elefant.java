@@ -31,12 +31,12 @@ public final class Elefant extends Spielfigur {
     if (position.getPunkttyp() == Punkttyp.FLUSS &&
         (position.getZeile() - ziel.getZeile() == -2) &&
         Math.abs((int) position.getSpalte() - ziel.getSpalte()) == 2 &&
-        farbe) {
+        farbe == Farbe.ROT) {
       result = true;
     } else if (position.getPunkttyp() == Punkttyp.FLUSS &&
         (position.getZeile() - ziel.getZeile() == 2) &&
         Math.abs((int) position.getSpalte() - ziel.getSpalte()) == 2 &&
-        !farbe) {
+        farbe == Farbe.SCHWARZ) {
       result = true;
     } else if (Math.abs(position.getZeile() - ziel.getZeile()) == 2 &&
         Math.abs(((int) position.getSpalte() - ziel.getSpalte())) == 2 &&
