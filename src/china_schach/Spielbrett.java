@@ -15,10 +15,16 @@ public final class Spielbrett extends World {
     }
     
     public void act() {
-        
+        spiel.starten();
+    }
+    
+    public Schnittpunkt getSchnittpunkt(int x, int y) {
+        return dieSchnittpunkte[x][y];
     }
 
-
+    public Schnittpunkt[][] getSchnittpunkte() {
+        return dieSchnittpunkte;
+    }
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -33,17 +39,48 @@ public final class Spielbrett extends World {
         }
 
         final var bauer1 = new Bauer(true);
-        addObject(bauer1, 649, 647);
+        addObject(bauer1, 50, 650);
         bauer1.setPosition();
-        final var bauer2 = new Bauer(false);
-        addObject(bauer2, 249, 346);
-        bauer2.setPosition();
+        final var bauer3 = new Bauer(true);
+        addObject(bauer3, 250, 650);
+        bauer3.setPosition();
+        final var bauer4 = new Bauer(true);
+        addObject(bauer4, 450, 650);
+        bauer4.setPosition();
+        final var bauer5 = new Bauer(true);
+        addObject(bauer5, 650, 650);
+        bauer5.setPosition();
+        final var bauer7 = new Bauer(true);
+        addObject(bauer7, 850, 650);
+        bauer7.setPosition();
+
+        final var bauer8 = new Bauer(false);
+        addObject(bauer8, 50, 350);
+        bauer8.setPosition();
+        final var bauer10 = new Bauer(false);
+        addObject(bauer10, 250, 350);
+        bauer10.setPosition();
+        final var bauer11 = new Bauer(false);
+        addObject(bauer11, 450, 350);
+        bauer11.setPosition();
+        final var bauer12 = new Bauer(false);
+        addObject(bauer12, 650, 350);
+        bauer12.setPosition();
+        final var bauer14 = new Bauer(false);
+        addObject(bauer14, 850, 350);
+        bauer14.setPosition(); 
         final var elefant1 = new Elefant(true);
-        addObject(elefant1, 243, 947);
+        addObject(elefant1, 250, 950);
         elefant1.setPosition();
+        final var elefant3 = new Elefant(true);
+        addObject(elefant3, 650, 950);
+        elefant3.setPosition();
         final var elefant2 = new Elefant(false);
-        addObject(elefant2, 652, 48);
+        addObject(elefant2, 650, 50);
         elefant2.setPosition();
+        final var elefant4 = new Elefant(false);
+        addObject(elefant4, 250, 50);
+        elefant4.setPosition();
 
         final var turmLR = new Turm(false);
         addObject(turmLR, 50, 50);
@@ -59,37 +96,50 @@ public final class Spielbrett extends World {
         turmRB.setPosition();
 
         final var kaiser1 = new Kaiser(true);
-        addObject(kaiser1, 450, 947);
+        addObject(kaiser1, 450, 950);
         kaiser1.setPosition();
         final var kaiser2 = new Kaiser(false);
-        addObject(kaiser2, 450, 48);
+        addObject(kaiser2, 450, 50);
         kaiser2.setPosition();
 
         final var mandarin1 = new Mandarin(true);
-        addObject(mandarin1, 350, 947);
+        addObject(mandarin1, 350, 950);
         mandarin1.setPosition();
         final var mandarin2 = new Mandarin(true);
-        addObject(mandarin2, 550, 947);
+        addObject(mandarin2, 550, 950);
         mandarin2.setPosition();
         final var mandarin3 = new Mandarin(false);
-        addObject(mandarin3, 350, 48);
+        addObject(mandarin3, 350, 50);
         mandarin3.setPosition();
         final var mandarin4 = new Mandarin(false);
-        addObject(mandarin4, 550, 48);
+        addObject(mandarin4, 550, 50);
         mandarin4.setPosition();
-
+        
         final var reiter1 = new Reiter(true);
-        addObject(reiter1, 150, 947);
+        addObject(reiter1, 150, 950);
         reiter1.setPosition();
         final var reiter2 = new Reiter(true);
-        addObject(reiter2, 750, 947);
+        addObject(reiter2, 750, 950);
         reiter2.setPosition();
         final var reiter3 = new Reiter(false);
-        addObject(reiter3, 150, 48);
+        addObject(reiter3, 150, 50);
         reiter3.setPosition();
         final var reiter4 = new Reiter(false);
-        addObject(reiter4, 750, 48);
+        addObject(reiter4, 750, 50);
         reiter4.setPosition();
+        
+        final var geschütz1= new Geschütz(true);
+        addObject(geschütz1, 150, 750);
+        geschütz1.setPosition();
+        final var geschütz2= new Geschütz(true);
+        addObject(geschütz2, 750, 750);
+        geschütz2.setPosition();
+        final var geschütz3= new Geschütz(false);
+        addObject(geschütz3, 150, 250);
+        geschütz3.setPosition();
+        final var geschütz4= new Geschütz(false);
+        addObject(geschütz4, 750, 250);
+        geschütz4.setPosition();
     }
 
     /**
@@ -101,32 +151,32 @@ public final class Spielbrett extends World {
                 if (y == 0 || y == 8) {
                     if (x >= 3 && x <= 5) {
                         dieSchnittpunkte[x][y] =
-                            new Schnittpunkt((char)(Character.getNumericValue('a') + x),
+                            new Schnittpunkt(x,
                                              y,
                                              true,
                                              Punkttyp.FESTUNG);
                     } else {
                         dieSchnittpunkte[x][y] =
-                            new Schnittpunkt((char)(Character.getNumericValue('a') + x),
+                            new Schnittpunkt(x,
                                              y,
                                              true,
                                              Punkttyp.NORMAL);
                     }
                 } else if (y == 4 || y == 5 ) {
                     dieSchnittpunkte[x][y] =
-                        new Schnittpunkt((char)(Character.getNumericValue('a') + x),
+                        new Schnittpunkt(x,
                                          y,
                                          false,
                                          Punkttyp.FLUSS);
                 } else if ((x >= 3 && x <= 5) && ((y <= 2) || (y >= 7))) {
                     dieSchnittpunkte[x][y] =
-                        new Schnittpunkt((char)(Character.getNumericValue('a') + x),
+                        new Schnittpunkt(x,
                                          y,
                                          false,
                                          Punkttyp.FESTUNG);
                 } else {
                     dieSchnittpunkte[x][y] =
-                        new Schnittpunkt((char)(Character.getNumericValue('a') + x),
+                        new Schnittpunkt(x,
                                          y,
                                          false,
                                          Punkttyp.NORMAL);

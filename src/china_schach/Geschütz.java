@@ -1,7 +1,5 @@
 
 import greenfoot.*;
-
-
 public final class Geschütz extends Spielfigur {
 
 
@@ -9,34 +7,29 @@ public final class Geschütz extends Spielfigur {
         super(farbeIstRot);
 
         if (farbeIstRot) {
-            setImage("image/RotBauer");
+            setImage("images/English-Cannon-Red.png");
         } else {
-            setImage("image/SchwarzBauer");
+            setImage("images/English-Cannon-Black.png");
         }
     }
 
-    public void act() {
-        if (Greenfoot.mouseDragged(this)) {
-            setLocation(Greenfoot.getMouseInfo().getX(),
-                        Greenfoot.getMouseInfo().getY());
-        }
-        if (Greenfoot.mouseDragEnded(this)) {
-            bewegen((Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class));
-        }
-    }
-
-    public void bewegen(final Schnittpunkt ziel) {
+    public boolean bewegen() {
+        Schnittpunkt ziel = (Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class);
         if (ziel != null && istBewegungErlaubt(ziel)) {
-            setLocation(((Actor)ziel).getX(), ((Actor)ziel).getY());
-            oldX = getX();
-            oldY = getY();
+          setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
+          oldX = getX();
+          oldY = getY();
         } else {
-            setLocation(oldX, oldY);
-            oldX = getX();
-            oldY = getY();
+          setLocation(oldX, oldY);
+          oldX = getX();
+          oldY = getY();
         }
+        return false;
     }
-
+    
+      public boolean iterateMoves(Schnittpunkt[][] schnittpunkte) {
+      return false;
+    } 
 
     private boolean istBewegungErlaubt(final Schnittpunkt ziel) {
         if (position.getZeile() != ziel.getZeile() ^

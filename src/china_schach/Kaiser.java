@@ -13,49 +13,46 @@ public final class Kaiser extends Spielfigur {
         }
     }
 
-    public void act() {
-        if (Greenfoot.mouseDragged(this)) {
-            setLocation(Greenfoot.getMouseInfo().getX(),
-                        Greenfoot.getMouseInfo().getY());
-        }
-        if (Greenfoot.mouseDragEnded(this)) {
-            bewegen((Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class));
-        }
-    }
-
-    public void bewegen(final Schnittpunkt ziel) {
+    public boolean bewegen() {
+        Schnittpunkt ziel = (Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class);
         if (ziel != null && istBewegungErlaubt(ziel)) {
-            setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
-            oldX = getX();
-            oldY = getY();
+          setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
+          oldX = getX();
+          oldY = getY();
         } else {
-            setLocation(oldX, oldY);
-            oldX = getX();
-            oldY = getY();
+          setLocation(oldX, oldY);
+          oldX = getX();
+          oldY = getY();
         }
+        return false;
     }
 
 
     private boolean istBewegungErlaubt(final Schnittpunkt ziel) {
-        if (ziel.getPunkttyp() == Punkttyp.FESTUNG &&
-            position.getPunkttyp() == Punkttyp.FESTUNG) {
+        boolean result = false;
+        if (ziel.getPunkttyp() == Punkttyp.FESTUNG 
+            && position.getPunkttyp() == Punkttyp.FESTUNG) {
             // Vertical movement
+            if(ziel.getSpielfigur() != null && ziel.getSpielfigur().farbeIstRot == farbeIstRot) {
+                return false;
+            }
             if (Math.abs(position.getZeile() - ziel.getZeile()) == 1 &&
                 Math.abs((int)position.getSpalte() - ziel.getSpalte()) == 0) {
                 setPosition();
                 position = ziel;
-                return true;
+                result = true;
             }
             // Horizontal movement
             else if(position.getZeile() - ziel.getZeile() == 0 &&
                     Math.abs((int)position.getSpalte() - ziel.getSpalte()) == 1){
                 setPosition();
-                position = ziel;
-                return true;
+                result = true;
             }
         }
-
-        return false;
+        return result;
     }
+      public boolean iterateMoves(Schnittpunkt[][] schnittpunkte) {
+      return false;
+  }
 }
 

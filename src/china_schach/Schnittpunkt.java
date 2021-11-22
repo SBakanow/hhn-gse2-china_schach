@@ -5,11 +5,11 @@ import greenfoot.*;
 public final class Schnittpunkt extends Actor {
     private Spielfigur dieSpielfigur;
     private final int zeile;
-    private final char spalte;
+    private final int spalte;
     private final boolean startpunkt;
     private final Punkttyp punkttyp;
 
-    public Schnittpunkt(final char spalte,
+    public Schnittpunkt(final int spalte,
                         final int zeile,
                         final boolean startpunkt,
                         final Punkttyp punkttyp) {
@@ -33,6 +33,10 @@ public final class Schnittpunkt extends Actor {
         dieSpielfigur = figur;
         return result;
     }
+    
+    public Spielfigur getSpielfigur() {
+        return dieSpielfigur;
+    }
 
     public void removeSpielfigur() {
         dieSpielfigur = null;
@@ -42,7 +46,7 @@ public final class Schnittpunkt extends Actor {
         return zeile;
     }
 
-    public char getSpalte() {
+    public int getSpalte() {
         return spalte;
     }
 

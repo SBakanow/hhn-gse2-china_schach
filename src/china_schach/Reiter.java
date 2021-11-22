@@ -11,28 +11,24 @@ public final class Reiter extends Spielfigur {
         }
     }
 
-    public void act() {
-        if (Greenfoot.mouseDragged(this)) {
-            setLocation(Greenfoot.getMouseInfo().getX(),
-                        Greenfoot.getMouseInfo().getY());
-        }
-        if (Greenfoot.mouseDragEnded(this)) {
-            bewegen((Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class));
-        }
-    }
 
-    public void bewegen(final Schnittpunkt ziel) {
+    public boolean bewegen() {
+        Schnittpunkt ziel = (Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class);
         if (ziel != null && istBewegungErlaubt(ziel)) {
-            setLocation(((Actor)ziel).getX(), ((Actor)ziel).getY());
-            oldX = getX();
-            oldY = getY();
+          setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
+          oldX = getX();
+          oldY = getY();
         } else {
-            setLocation(oldX, oldY);
-            oldX = getX();
-            oldY = getY();
+          setLocation(oldX, oldY);
+          oldX = getX();
+          oldY = getY();
         }
+        return false;
     }
-
+    
+    public boolean iterateMoves(Schnittpunkt[][] schnittpunkte) {
+      return false;
+  }
 
     public boolean istBewegungErlaubt(final Schnittpunkt ziel) {
         boolean ergebnis = false;

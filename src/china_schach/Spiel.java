@@ -1,18 +1,15 @@
-public final class Spiel {
-    // Da ChinaSchachKontrolle sich als Singleton anbietet brauchen wir keine Variable => Discuss
-    //private final ChinaSchachKontrolle dieKontrollKlasse;
-    private ChinaSchachKontrolle dieKontrollKlasse;
+import greenfoot.*;
+
+public final class Spiel extends Actor {
+    
     private Spieler[] dieSpieler = new Spieler[2];
     private Spielbrett dasSpielbrett;
     private Spielfigur[] dieSpielfiguren = new Spielfigur[32];
     private Spielstand spielstand = Spielstand.UNKONFIGURIERT;
+    private Spielfigur actor = null;
+    
     public Spiel(Spielbrett spielbrett) {
-        dieSpieler      = new Spieler[2];
-        dasSpielbrett      = spielbrett;
-        dieSpielfiguren = new Spielfigur[32];
-        spielstand      = Spielstand.UNKONFIGURIERT;
-        dieKontrollKlasse = ChinaSchachKontrolle.getInstance();
-        // TODO - implement Spiel.Spiel
+        dasSpielbrett = spielbrett;
     }
 
     public void konfiguriereSpiel() {
@@ -20,7 +17,7 @@ public final class Spiel {
         // TODO - implement Spiel.konfiguriereSpiel
         throw new UnsupportedOperationException();
     }
-
+    
     public void zurücksetzen() {
         // TODO - implement Spiel.zurücksetzen
         throw new UnsupportedOperationException();
@@ -28,8 +25,20 @@ public final class Spiel {
 
     public void starten() {
         spielstand = Spielstand.LAUFEND;
-        // TODO - implement Spiel.starten
-        throw new UnsupportedOperationException();
+        if(Greenfoot.mousePressed(null)) {
+            actor = (Spielfigur) Greenfoot.getMouseInfo().getActor();
+        }
+        if (actor != null) {
+            if (Greenfoot.mouseDragged(null)) {
+                ((Actor)actor).setLocation(Greenfoot.getMouseInfo().getX(),
+                        Greenfoot.getMouseInfo().getY());
+            }
+            if (Greenfoot.mouseDragEnded(null)) {
+                if(actor.bewegen())
+                    actor.iterateMoves(dasSpielbrett.getSchnittpunkte());
+            }
+            // TODO - implement Spiel.starten
+        }
     }
 
     public void beenden() {
