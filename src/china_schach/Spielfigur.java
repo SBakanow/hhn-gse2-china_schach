@@ -3,6 +3,7 @@ import greenfoot.Actor;
 
 public abstract class Spielfigur extends Actor {
 
+
   protected final Farbe farbe;
   protected Schnittpunkt position;
   protected int oldX;
@@ -22,9 +23,6 @@ public abstract class Spielfigur extends Actor {
    */
   public abstract boolean bewegen(Schnittpunkt[][] schnittpunkte);
 
-  public void test() {
-    System.out.println("Test");
-  }
 
   /**
    * Setze die Position der Spielfigur
@@ -32,14 +30,18 @@ public abstract class Spielfigur extends Actor {
   public void setPosition() {
     if (position != null) {
       position.removeSpielfigur();
+
     }
+  }
+
+  public void isLocationValid() {
+
     position = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
     position.setSpielfigur(this);
     oldX = getX();
     oldY = getY();
   }
 
-  public void isLocationValid() {
 
-  }
 }
+
