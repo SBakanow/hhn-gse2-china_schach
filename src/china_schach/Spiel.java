@@ -28,8 +28,9 @@ public final class Spiel extends Actor {
             Greenfoot.getMouseInfo().getY());
       }
       if (Greenfoot.mouseDragEnded(null) && actor.getFarbe() == farbe) {
-        actor.bewegen(dasSpielbrett.getSchnittpunkte());
-        farbe = Farbe.ROT == farbe ? Farbe.SCHWARZ : Farbe.ROT;
+        if(actor.bewegen(dasSpielbrett.getSchnittpunkte())) {
+            farbe = Farbe.ROT == farbe ? Farbe.SCHWARZ : Farbe.ROT;
+        }
       }
     }
   }

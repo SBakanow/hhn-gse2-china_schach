@@ -1,3 +1,4 @@
+import greenfoot.Actor;
 public final class Elefant extends Spielfigur {
 
   public Elefant(final Farbe farbe) {
@@ -11,17 +12,20 @@ public final class Elefant extends Spielfigur {
   }
 
   public boolean bewegen(Schnittpunkt[][] schnittpunkte) {
+    boolean result = false;
     Schnittpunkt ziel = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
-    return istBewegungErlaubt(ziel);
-        /*if (ziel != null && istBewegungErlaubt(ziel)) {
-          setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
-          oldX = getX();
-          oldY = getY();
-        } else {
-          setLocation(oldX, oldY);
-          oldX = getX();
-          oldY = getY();
-        }*/
+    if (ziel != null && istBewegungErlaubt(ziel)) {
+        setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
+        setPosition();
+        oldX = getX();
+        oldY = getY();
+        result = true;
+    } else {
+        setLocation(oldX, oldY);
+        oldX = getX();
+        oldY = getY();
+    }
+    return result;
   }
 
 
@@ -29,7 +33,7 @@ public final class Elefant extends Spielfigur {
     boolean result = false;
     istSpielfigurDazwischen(ziel);
     if (position.getPunkttyp() == Punkttyp.FLUSS &&
-        (position.getZeile() - ziel.getZeile() == -2) &&
+        position.getZeile() - ziel.getZeile() == -2 &&
         Math.abs((int) position.getSpalte() - ziel.getSpalte()) == 2 &&
         farbe == Farbe.ROT) {
       result = true;
