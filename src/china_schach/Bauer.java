@@ -1,6 +1,5 @@
 import greenfoot.Actor;
 
-
 public final class Bauer extends Spielfigur {
 
   public Bauer(final Farbe farbe) {
@@ -17,8 +16,10 @@ public final class Bauer extends Spielfigur {
     Schnittpunkt ziel = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
     if (ziel != null && istBewegungErlaubt(ziel)) {
       setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
+      setPosition();
       oldX = getX();
       oldY = getY();
+      return true;
     } else {
       setLocation(oldX, oldY);
       oldX = getX();
@@ -30,9 +31,6 @@ public final class Bauer extends Spielfigur {
   private boolean istBewegungErlaubt(final Schnittpunkt ziel) {
     if (farbe == Farbe.ROT) {
       if (ziel.getZeile() <= 4) {
-        System.out.println(Math.abs(position.getSpalte() - ziel.getSpalte()));
-        System.out.println(position.getZeile() == ziel.getZeile());
-
         if (Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 &&
             position.getZeile() == ziel.getZeile()) {
           return true;
@@ -58,4 +56,3 @@ public final class Bauer extends Spielfigur {
     return false;
   }
 }
-
