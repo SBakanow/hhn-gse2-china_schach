@@ -20,9 +20,7 @@ public abstract class Spielfigur extends Actor {
     /**
      * @param ziel Ziel an dem die Spielfigur hin will.
      */
-    public abstract boolean bewegen();
-    
-    public abstract boolean iterateMoves(Schnittpunkt[][] schnittpunkte);
+    public abstract boolean bewegen(Schnittpunkt[][] schnittpunkte);
     
     public void test() {
         System.out.println("Test");

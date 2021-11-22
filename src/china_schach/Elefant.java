@@ -12,7 +12,7 @@ public final class Elefant extends Spielfigur {
     }
   }
 
-  public boolean bewegen() {
+  public boolean bewegen(Schnittpunkt[][] schnittpunkte) {
         Schnittpunkt ziel = (Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class);
         return istBewegungErlaubt(ziel);
         /*if (ziel != null && istBewegungErlaubt(ziel)) {
@@ -45,31 +45,26 @@ public final class Elefant extends Spielfigur {
         position.getPunkttyp() != Punkttyp.FLUSS) {
       result = true;
     }
-    
-    if(ziel.getSpielfigur().farbeIstRot != farbeIstRot) {
-        result = true;
-    } else {
-        result = false;
-    }
     return result;
   }
   
     
-  public boolean iterateMoves(Schnittpunkt[][] schnittpunkte) {
+  /*public boolean iterateMoves(Schnittpunkt[][] schnittpunkte) {
       boolean result = false;
       Schnittpunkt ziel = (Schnittpunkt)getOneIntersectingObject(Schnittpunkt.class);
-      int x = ((position.getZeile() - ziel.getZeile()) * -1)/2;
-      int y = ((position.getSpalte() - ziel.getSpalte()) * -1)/2;
-      if (schnittpunkte[ziel.getZeile() + x][ziel.getSpalte() + y].getSpielfigur() != null) {
+      int y = ((position.getZeile() - ziel.getZeile()) * -1)/2;
+      int x = ((position.getSpalte() - ziel.getSpalte()) * -1)/2;
+      if (schnittpunkte[ziel.getSpalte() + x][ziel.getZeile() + y].getSpielfigur() != null) {
           setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
           oldX = getX();
           oldY = getY();
         } else {
+          setPosition();
           setLocation(oldX, oldY);
       }
       
       return result;
-  }
+  }*/
   private boolean istSpielfigurDazwischen(final Schnittpunkt ziel) {
       
       return false;

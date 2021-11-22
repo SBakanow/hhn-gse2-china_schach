@@ -34,8 +34,7 @@ public final class Spiel extends Actor {
                         Greenfoot.getMouseInfo().getY());
             }
             if (Greenfoot.mouseDragEnded(null)) {
-                if(actor.bewegen())
-                    actor.iterateMoves(dasSpielbrett.getSchnittpunkte());
+                actor.bewegen(dasSpielbrett.getSchnittpunkte());
             }
             // TODO - implement Spiel.starten
         }
