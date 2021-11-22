@@ -15,10 +15,12 @@ public final class Turm extends Spielfigur {
 
   public boolean bewegen(Schnittpunkt[][] schnittpunkte) {
     Schnittpunkt ziel = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
-    if (ziel != null && istBewegungErlaubt(ziel)) {
+    if (ziel != null && istBewegungErlaubt(ziel) && istKeinVerbündeter(ziel) && istSpielfigurDazwischen(ziel, schnittpunkte)) {
       setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
+      setPosition();
       oldX = getX();
       oldY = getY();
+      return true;
     } else {
       setLocation(oldX, oldY);
       oldX = getX();
@@ -30,12 +32,17 @@ public final class Turm extends Spielfigur {
   private boolean istBewegungErlaubt(final Schnittpunkt ziel) {
     if (position.getZeile() != ziel.getZeile() ^
         position.getSpalte() != ziel.getSpalte()) {
-      setPosition();
-      position = ziel;
       return true;
     }
-
     return false;
+  }
+
+  private boolean istSpielfigurDazwischen(final Schnittpunkt ziel, final Schnittpunkt[][] schnittpunkte) {
+    boolean result = false;
+
+      // todo
+
+    return !result;
   }
 }
 

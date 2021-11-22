@@ -47,6 +47,8 @@ public abstract class Spielfigur extends Actor {
     oldY = getY();
   }
 
-
+  public boolean istKeinVerbündeter(Schnittpunkt ziel) {
+    return ziel.getSpielfigur() == null || ziel.getSpielfigur().getFarbe() != farbe;
+  }
 }
 

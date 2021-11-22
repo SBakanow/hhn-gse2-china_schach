@@ -14,7 +14,7 @@ public final class Elefant extends Spielfigur {
   public boolean bewegen(Schnittpunkt[][] schnittpunkte) {
     boolean result = false;
     Schnittpunkt ziel = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
-    if (ziel != null && istBewegungErlaubt(ziel) && istSpielfigurDazwischen(ziel, schnittpunkte) && istVerbündeter(ziel)) {
+    if (ziel != null && istBewegungErlaubt(ziel) && istSpielfigurDazwischen(ziel, schnittpunkte) && istKeinVerbündeter(ziel)) {
         setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
         setPosition();
         result = true;
@@ -22,10 +22,6 @@ public final class Elefant extends Spielfigur {
         setLocation(oldX, oldY);
     }
     return result;
-  }
-  
-  private boolean istVerbündeter(Schnittpunkt ziel) {
-      return ziel.getSpielfigur() == null || ziel.getSpielfigur().getFarbe() != farbe;
   }
 
   private boolean istBewegungErlaubt(final Schnittpunkt ziel) {

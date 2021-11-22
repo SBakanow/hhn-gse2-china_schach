@@ -14,10 +14,12 @@ public final class Reiter extends Spielfigur {
 
   public boolean bewegen(Schnittpunkt[][] schnittpunkte) {
     Schnittpunkt ziel = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
-    if (ziel != null && istBewegungErlaubt(ziel)) {
+    if (ziel != null && istBewegungErlaubt(ziel) && istKeinVerbündeter(ziel) && istSpielfigurDazwischen(ziel, schnittpunkte)) {
       setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
+      setPosition();
       oldX = getX();
       oldY = getY();
+      return true;
     } else {
       setLocation(oldX, oldY);
       oldX = getX();
@@ -33,10 +35,17 @@ public final class Reiter extends Spielfigur {
         && Math.abs((int) position.getSpalte() - ziel.getSpalte()) == 1)
         || Math.abs((int) position.getSpalte() - ziel.getSpalte()) == 2
         && Math.abs((int) position.getZeile() - ziel.getZeile()) == 1) {
-      setPosition();
       ergebnis = true;
     }
     return ergebnis;
+  }
+
+  private boolean istSpielfigurDazwischen(final Schnittpunkt ziel, final Schnittpunkt[][] schnittpunkte) {
+    boolean result = false;
+
+      //todo
+
+    return !result;
   }
 }
 
