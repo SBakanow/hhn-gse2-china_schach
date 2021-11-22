@@ -29,28 +29,54 @@ public final class Bauer extends Spielfigur {
   }
 
   private boolean istBewegungErlaubt(final Schnittpunkt ziel) {
-    if (farbe == Farbe.ROT) {
-      if (ziel.getZeile() <= 4) {
-        if (Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 &&
-            position.getZeile() == ziel.getZeile()) {
-          return true;
+    if (ziel.getSpielfigur() != null) {
+        if (farbe == Farbe.ROT && ziel.getSpielfigur().getFarbe() == Farbe.SCHWARZ) {
+          if (ziel.getZeile() <= 4) {
+            if (Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 &&
+                position.getZeile() == ziel.getZeile()) {
+              return true;
+            }
+          }
+          if (position.getZeile() - ziel.getZeile() == 1 &&
+              position.getSpalte() == ziel.getSpalte()) {
+            return true;
+          }
+        } else if(farbe == Farbe.SCHWARZ && ziel.getSpielfigur().getFarbe() == Farbe.ROT) {
+          if (ziel.getZeile() >= 5) {
+            if (Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 &&
+                position.getZeile() == ziel.getZeile()) {
+              return true;
+            }
+          }
+          if (position.getZeile() - ziel.getZeile() == -1 &&
+              position.getSpalte() == ziel.getSpalte()) {
+            return true;
+          }
         }
-      }
-      if (position.getZeile() - ziel.getZeile() == 1 &&
-          position.getSpalte() == ziel.getSpalte()) {
-        return true;
-      }
     } else {
-      if (ziel.getZeile() >= 5) {
-        if (Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 &&
-            position.getZeile() == ziel.getZeile()) {
-          return true;
+        if (farbe == Farbe.ROT) {
+          if (ziel.getZeile() <= 4) {
+            if (Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 &&
+                position.getZeile() == ziel.getZeile()) {
+              return true;
+            }
+          }
+          if (position.getZeile() - ziel.getZeile() == 1 &&
+              position.getSpalte() == ziel.getSpalte()) {
+            return true;
+          }
+        } else if(farbe == Farbe.SCHWARZ) {
+          if (ziel.getZeile() >= 5) {
+            if (Math.abs(position.getSpalte() - ziel.getSpalte()) == 1 &&
+                position.getZeile() == ziel.getZeile()) {
+              return true;
+            }
+          }
+          if (position.getZeile() - ziel.getZeile() == -1 &&
+              position.getSpalte() == ziel.getSpalte()) {
+            return true;
+          }
         }
-      }
-      if (position.getZeile() - ziel.getZeile() == -1 &&
-          position.getSpalte() == ziel.getSpalte()) {
-        return true;
-      }
     }
 
     return false;
