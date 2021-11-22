@@ -8,7 +8,7 @@ public final class Spiel extends Actor {
     private Spielstand spielstand = Spielstand.UNKONFIGURIERT;
     private Spielfigur actor = null;
     
-    private FarbeAmZug farbeAmZug = FarbeAmZug.ROT;
+    private FarbeAmZug farbeAmZug = Farbe.ROT;
     
     public Spiel(Spielbrett spielbrett) {
         dasSpielbrett = spielbrett;
@@ -31,13 +31,13 @@ public final class Spiel extends Actor {
             actor = (Spielfigur) Greenfoot.getMouseInfo().getActor();
         }
         if (actor != null) {
-            if (Greenfoot.mouseDragged(null)) {
-                if(actor.
+            if (Greenfoot.mouseDragged(null) && actor.getFarbe() == farbeAmZug) {
                 ((Actor)actor).setLocation(Greenfoot.getMouseInfo().getX(),
                         Greenfoot.getMouseInfo().getY());
             }
-            if (Greenfoot.mouseDragEnded(null)) {
+            if (Greenfoot.mouseDragEnded(null) && actor.getFarbe() == farbeAmZug) {
                 actor.bewegen(dasSpielbrett.getSchnittpunkte());
+                farbeAmZug = Farbe.ROT == farbeAmZug ? Farbe.SCHWARZ : Farbe.ROT;
             }
             // TODO - implement Spiel.starten
         }

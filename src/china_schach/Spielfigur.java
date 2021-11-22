@@ -7,17 +7,19 @@ public abstract class Spielfigur extends Actor {
     protected int oldX;
     protected int oldY;
     protected boolean geschlagen;
-    protected final FarbeAmZug farbeIstRot;
+    protected final FarbeAmZug farbe;
 
     /**
      * @param farbeIstRot Gibt an, ob die Spielfigur rot ist oder nicht.
      */
-    public Spielfigur(final FarbeAmZug farbeIstRot) {
+    public Spielfigur(final Farbe farbeIstRot) {
         // TODO - implement Spielfigur.Spielfigur
-        this.farbeIstRot = farbeIstRot;
+        this.farbe = farbeIstRot;
     }
     
-    public Farbe
+    public Farbe getFarbe() {
+        return farbe;
+    }
     
     /**
      * @param ziel Ziel an dem die Spielfigur hin will.
