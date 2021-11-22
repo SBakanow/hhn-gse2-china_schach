@@ -3,10 +3,10 @@ import greenfoot.*;
 
 
 public final class Kaiser extends Spielfigur {
-    public Kaiser(final boolean farbeIstRot) {
-        super(farbeIstRot);
+    public Kaiser(final FarbeAmZug farbe) {
+        super(farbe);
 
-        if (farbeIstRot) {
+        if (farbe == FarbeAmZug.ROT) {
             setImage("English-King-Red.png");
         } else {
             setImage("English-King-Black.png");

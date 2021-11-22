@@ -8,6 +8,8 @@ public final class Spiel extends Actor {
     private Spielstand spielstand = Spielstand.UNKONFIGURIERT;
     private Spielfigur actor = null;
     
+    private FarbeAmZug farbeAmZug = FarbeAmZug.ROT;
+    
     public Spiel(Spielbrett spielbrett) {
         dasSpielbrett = spielbrett;
     }
