@@ -1,6 +1,5 @@
 import greenfoot.Actor;
 
-
 public final class Schnittpunkt extends Actor {
 
   private final int zeile;

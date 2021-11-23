@@ -1,5 +1,5 @@
 import greenfoot.Actor;
-
+import greenfoot.Greenfoot;
 
 public abstract class Spielfigur extends Actor {
 
@@ -35,6 +35,9 @@ public abstract class Spielfigur extends Actor {
       position.removeSpielfigur();
     }
     position = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
+    if (position.getSpielfigur() != null) {
+        Greenfoot.playSound("that-turns-me-on.mp3");
+    }
     position.setSpielfigur(this);
     oldX = getX();
     oldY = getY();
