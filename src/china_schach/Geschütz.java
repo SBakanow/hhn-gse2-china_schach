@@ -2,7 +2,6 @@ import greenfoot.Actor;
 
 public final class Geschütz extends Spielfigur {
 
-
   public Geschütz(final Farbe farbe) {
     super(farbe);
 
@@ -13,7 +12,7 @@ public final class Geschütz extends Spielfigur {
     }
   }
 
-  public boolean bewegen(Schnittpunkt[][] schnittpunkte) {
+  public boolean bewegen(final Schnittpunkt[][] schnittpunkte) {
     Schnittpunkt ziel = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
     if (ziel != null && istBewegungErlaubt(ziel, schnittpunkte)) {
       setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
@@ -39,10 +38,13 @@ public final class Geschütz extends Spielfigur {
 
   private boolean istSpielfigurDazwischen(final Schnittpunkt ziel, final Schnittpunkt[][] schnittpunkte) {
     boolean result = false;
+    final int xPos = (position.getSpalte() - ziel.getSpalte()) >> 1;
+    final int yPos = (position.getZeile() - ziel.getZeile()) >> 1;
 
-       // todo
-
-    return result;
+    if (schnittpunkte[ziel.getSpalte() + xPos][ziel.getZeile - yPos].getSpielfigur() != null) {
+      result = true;
+    }
+    return !result;
   }
 }
 
