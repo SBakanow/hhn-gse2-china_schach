@@ -41,7 +41,7 @@ public final class Geschütz extends Spielfigur {
     final int xPos = (position.getSpalte() - ziel.getSpalte()) >> 1;
     final int yPos = (position.getZeile() - ziel.getZeile()) >> 1;
 
-    if (schnittpunkte[ziel.getSpalte() + xPos][ziel.getZeile - yPos].getSpielfigur() != null) {
+    if (schnittpunkte[ziel.getSpalte() + xPos][ziel.getZeile() - yPos].getSpielfigur() != null) {
       result = true;
     }
     return !result;

@@ -7,9 +7,9 @@ public final class Turm extends Spielfigur {
     super(farbe);
 
     if (farbe == Farbe.ROT) {
-      setImage("English-King-Red.png");
+      setImage("English-Rook-Red.png");
     } else {
-      setImage("English-King-Black.png");
+      setImage("English-Rook-Black.png");
     }
   }
 
