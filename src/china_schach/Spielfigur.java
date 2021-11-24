@@ -26,6 +26,10 @@ public abstract class Spielfigur extends Actor {
   public Farbe getFarbe() {
       return farbe;
   }
+  
+  public void setGeschlagen() {
+      geschlagen = true;
+  }
 
   /**
    * Setze die Position der Spielfigur

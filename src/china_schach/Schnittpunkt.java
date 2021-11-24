@@ -33,8 +33,10 @@ public final class Schnittpunkt extends Actor {
 
   public boolean setSpielfigur(Spielfigur figur) {
     boolean result = false;
-
     getWorld().removeObject(dieSpielfigur);
+    if(dieSpielfigur != null) {
+        dieSpielfigur.setGeschlagen();
+    }
     dieSpielfigur = figur;
     return result;
   }
