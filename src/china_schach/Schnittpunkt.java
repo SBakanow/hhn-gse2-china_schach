@@ -17,24 +17,10 @@ public final class Schnittpunkt extends Actor {
     this.spalte = spalte;
     this.startpunkt = startpunkt;
     this.punkttyp = punkttyp;
-
-    switch (punkttyp) {
-      case FESTUNG:
-        setImage("red-draught.png");
-        break;
-      case FLUSS:
-        setImage("yellow-draught.png");
-        break;
-      default:
-        setImage("blue-draught.png");
-        break;
-    }
   }
 
   public boolean setSpielfigur(Spielfigur figur) {
     boolean result = false;
-
-    getWorld().removeObject(dieSpielfigur);
     dieSpielfigur = figur;
     return result;
   }
