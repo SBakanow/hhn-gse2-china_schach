@@ -16,14 +16,13 @@ public final class Reiter extends Spielfigur {
     Schnittpunkt ziel = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
     if (ziel != null && istBewegungErlaubt(ziel) && istKeinVerbündeter(ziel) && istSpielfigurDazwischen(ziel, schnittpunkte)) {
       setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
+      schlagen(ziel);
       setPosition();
       oldX = getX();
       oldY = getY();
       return true;
     } else {
       setLocation(oldX, oldY);
-      oldX = getX();
-      oldY = getY();
     }
     return false;
   }
@@ -41,11 +40,33 @@ public final class Reiter extends Spielfigur {
   }
 
   private boolean istSpielfigurDazwischen(final Schnittpunkt ziel, final Schnittpunkt[][] schnittpunkte) {
-    boolean result = false;
+    int difZ = ziel.getZeile() - position.getZeile();
+    int difS = ziel.getSpalte() - position.getSpalte();
 
-      //todo
-
-    return !result;
+    if (Math.abs(difS) > Math.abs(difZ)) {
+      //Vertical
+      if (difS < 0) {
+          if (schnittpunkte[position.getSpalte() - 1][position.getZeile()].getSpielfigur() != null) {
+            return false;
+          }
+      } else {
+          if (schnittpunkte[position.getSpalte() + 1][position.getZeile()].getSpielfigur() != null) {
+            return false;
+        }
+      }
+      //Horizontal
+    } else {
+      if (difZ < 0) {
+          if (schnittpunkte[position.getSpalte()][position.getZeile() - 1].getSpielfigur() != null) {
+            return false;
+          }
+      } else {
+          if (schnittpunkte[position.getSpalte()][position.getZeile() + 1].getSpielfigur() != null) {
+            return false;
+          }
+        }
+    }
+    return true;
   }
 }
 

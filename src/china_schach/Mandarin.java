@@ -16,14 +16,13 @@ public final class Mandarin extends Spielfigur {
     Schnittpunkt ziel = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
     if (ziel != null && istBewegungErlaubt(ziel) && istKeinVerbündeter(ziel)) {
       setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
+      schlagen(ziel);
       setPosition();
       oldX = getX();
       oldY = getY();
       return true;
     } else {
       setLocation(oldX, oldY);
-      oldX = getX();
-      oldY = getY();
     }
     return false;
   }
