@@ -6,11 +6,6 @@ public final class ChinaSchachKontrolle {
     // TODO - implement ChinaSchachKontrolle.ChinaSchachKontrolle
   }
 
-  static public boolean prüfeGeschlagen(final Spielfigur figur) {
-    // TODO - implement ChinaSchachKontrolle.prüfeGeschlagen
-    throw new UnsupportedOperationException();
-  }
-
   public static ChinaSchachKontrolle getInstance() {
     if (instance == null) {
       instance = new ChinaSchachKontrolle();

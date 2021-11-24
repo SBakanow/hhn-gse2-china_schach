@@ -19,8 +19,6 @@ public final class Geschütz extends Spielfigur {
       setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
       schlagen(ziel);
       setPosition();
-      oldX = getX();
-      oldY = getY();
       return true;
     } else {
       setLocation(oldX, oldY);
@@ -32,8 +30,10 @@ public final class Geschütz extends Spielfigur {
     if ((position.getZeile() == ziel.getZeile() ^ position.getSpalte() == ziel.getSpalte())
             && !istSpielfigurDazwischen(ziel, schnittpunkt) && ziel.getSpielfigur() == null) {
       return true;
-    } else return (position.getZeile() != ziel.getZeile() ^ position.getSpalte() != ziel.getSpalte())
+    } else {
+      return (position.getZeile() != ziel.getZeile() ^ position.getSpalte() != ziel.getSpalte())
             && (ziel.getSpielfigur() != null && istKeinVerbündeter(ziel)) && istSpielfigurDazwischen(ziel, schnittpunkt);
+    }
   }
 
   private boolean istSpielfigurDazwischen(final Schnittpunkt ziel, final Schnittpunkt[][] schnittpunkte) {
@@ -41,32 +41,20 @@ public final class Geschütz extends Spielfigur {
     if (dif == 0) {
       //Vertical
       dif = ziel.getSpalte() - position.getSpalte();
-      if (dif < 0) {
-        for (int i = 1; i < Math.abs(dif); i++) {
-          if (schnittpunkte[position.getSpalte() - i][ziel.getZeile()].getSpielfigur() != null) {
+      for (int i = 1; i < Math.abs(dif); i++) {
+        if (dif < 0 && schnittpunkte[position.getSpalte() - i][ziel.getZeile()].getSpielfigur() != null) {
             return true;
-          }
-        }
-      } else {
-        for (int i = 1; i < dif; i++) {
-          if (schnittpunkte[position.getSpalte() + i][ziel.getZeile()].getSpielfigur() != null) {
+        } else if(dif > 0 && schnittpunkte[position.getSpalte() + i][ziel.getZeile()].getSpielfigur() != null) {
             return true;
-          }
         }
       }
       //Horizontal
     } else {
-      if (dif < 0) {
-        for (int i = 1; i < Math.abs(dif); i++) {
-          if (schnittpunkte[ziel.getSpalte()][position.getZeile() - i].getSpielfigur() != null) {
-            return true;
-          }
-        }
-      } else {
-        for (int i = 1; i < dif; i++) {
-          if (schnittpunkte[ziel.getSpalte()][position.getZeile() + i].getSpielfigur() != null) {
-            return true;
-          }
+      for (int i = 1; i < Math.abs(dif); i++) {
+        if (dif < 0 && schnittpunkte[ziel.getSpalte()][position.getZeile() - i].getSpielfigur() != null) {
+          return true;
+        } else if (dif > 0 && schnittpunkte[ziel.getSpalte()][position.getZeile() + i].getSpielfigur() != null) {
+          return true;
         }
       }
     }

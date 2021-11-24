@@ -18,8 +18,6 @@ public final class Reiter extends Spielfigur {
       setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
       schlagen(ziel);
       setPosition();
-      oldX = getX();
-      oldY = getY();
       return true;
     } else {
       setLocation(oldX, oldY);

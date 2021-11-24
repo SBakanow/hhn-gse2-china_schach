@@ -3,8 +3,6 @@ import greenfoot.Greenfoot;
 
 public abstract class Spielfigur extends Actor {
 
-
-
     protected final Farbe farbe;
     protected Schnittpunkt position;
     protected int oldX;
@@ -39,13 +37,6 @@ public abstract class Spielfigur extends Actor {
             position.removeSpielfigur();
         }
         Greenfoot.playSound("click.mp3");
-        position = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
-        position.setSpielfigur(this);
-        oldX = getX();
-        oldY = getY();
-    }
-
-    public void isLocationValid() {
         position = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
         position.setSpielfigur(this);
         oldX = getX();

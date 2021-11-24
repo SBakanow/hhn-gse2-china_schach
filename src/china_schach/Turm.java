@@ -39,32 +39,20 @@ public final class Turm extends Spielfigur {
     if (dif == 0) {
       //Vertical
       dif = ziel.getSpalte() - position.getSpalte();
-      if (dif < 0) {
-        for (int i = 1; i < Math.abs(dif); i++) {
-          if (schnittpunkte[position.getSpalte() - i][ziel.getZeile()].getSpielfigur() != null) {
+      for (int i = 1; i < Math.abs(dif); i++) {
+        if (dif < 0 && schnittpunkte[position.getSpalte() - i][ziel.getZeile()].getSpielfigur() != null) {
             return false;
-          }
-        }
-      } else {
-        for (int i = 1; i < dif; i++) {
-          if (schnittpunkte[position.getSpalte() + i][ziel.getZeile()].getSpielfigur() != null) {
+        } else if(dif > 0 && schnittpunkte[position.getSpalte() + i][ziel.getZeile()].getSpielfigur() != null) {
             return false;
-          }
         }
       }
       //Horizontal
     } else {
-      if (dif < 0) {
-        for (int i = 1; i < Math.abs(dif); i++) {
-          if (schnittpunkte[ziel.getSpalte()][position.getZeile() - i].getSpielfigur() != null) {
-            return false;
-          }
-        }
-      } else {
-        for (int i = 1; i < dif; i++) {
-          if (schnittpunkte[ziel.getSpalte()][position.getZeile() + i].getSpielfigur() != null) {
-            return false;
-          }
+      for (int i = 1; i < Math.abs(dif); i++) {
+        if (dif < 0 && schnittpunkte[ziel.getSpalte()][position.getZeile() - i].getSpielfigur() != null) {
+          return false;
+        } else if (dif > 0 && schnittpunkte[ziel.getSpalte()][position.getZeile() + i].getSpielfigur() != null) {
+          return false;
         }
       }
     }
