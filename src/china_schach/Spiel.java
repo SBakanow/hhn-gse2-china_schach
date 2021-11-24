@@ -23,7 +23,9 @@ public final class Spiel extends Actor {
       actor = (Spielfigur) Greenfoot.getMouseInfo().getActor();
     }
     if (actor != null) {
+     if(!actor.geschlagen){
       if (Greenfoot.mouseDragged(null) && actor.getFarbe() == farbe) {
+        System.out.println(actor.geschlagen);
         ((Actor) actor).setLocation(Greenfoot.getMouseInfo().getX(),
             Greenfoot.getMouseInfo().getY());
       }
@@ -32,6 +34,7 @@ public final class Spiel extends Actor {
             farbe = Farbe.ROT == farbe ? Farbe.SCHWARZ : Farbe.ROT;
         }
       }
+        }
     }
   }
 
