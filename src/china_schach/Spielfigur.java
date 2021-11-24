@@ -4,6 +4,7 @@ import greenfoot.Greenfoot;
 public abstract class Spielfigur extends Actor {
 
 
+
     protected final Farbe farbe;
     protected Schnittpunkt position;
     protected int oldX;
@@ -29,6 +30,7 @@ public abstract class Spielfigur extends Actor {
         return farbe;
     }
 
+    
     /**
      * Setze die Position der Spielfigur
      */

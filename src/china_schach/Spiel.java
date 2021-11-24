@@ -25,7 +25,7 @@ public final class Spiel extends Actor {
     if (actor != null) {
      if(!actor.geschlagen){
       if (Greenfoot.mouseDragged(null) && actor.getFarbe() == farbe) {
-        System.out.println(actor.geschlagen);
+        //System.out.println(actor.geschlagen);
         ((Actor) actor).setLocation(Greenfoot.getMouseInfo().getX(),
             Greenfoot.getMouseInfo().getY());
       }
