@@ -8,8 +8,8 @@ public abstract class Spielfigur extends Actor {
     protected int oldX;
     protected int oldY;
     protected boolean geschlagen;
-    protected static int geschlageneRoteSpieler = 0;
-    protected static int geschlageneSchwarzeSpieler = 0;
+    protected static int geschlageneRoteSpieler;
+    protected static int geschlageneSchwarzeSpieler;
 
     /**
      * @param farbe Gibt an, ob die Spielfigur rot ist oder nicht.
@@ -17,6 +17,15 @@ public abstract class Spielfigur extends Actor {
     public Spielfigur(final Farbe farbe) {
         // TODO - implement Spielfigur.Spielfigur
         this.farbe = farbe;
+    }
+    
+    public static void resetSpielfigurStatics() {
+        geschlageneRoteSpieler = 0;
+        geschlageneSchwarzeSpieler = 0;
+    }
+    
+    public boolean istGeschlagen() {
+        return geschlagen;
     }
 
     /**
@@ -36,7 +45,6 @@ public abstract class Spielfigur extends Actor {
         if (position != null) {
             position.removeSpielfigur();
         }
-        Greenfoot.playSound("click.mp3");
         position = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
         position.setSpielfigur(this);
         oldX = getX();
@@ -49,7 +57,7 @@ public abstract class Spielfigur extends Actor {
 
     public void schlagen(Schnittpunkt ziel) {
         Spielfigur geschlagener = ziel.getSpielfigur();
-        if (geschlagener != null && !(geschlagener instanceof Kaiser)) {
+        if (geschlagener != null) {
             int x = 0;
             int y = 0;
             if (ziel.getSpielfigur().farbe == Farbe.ROT) {

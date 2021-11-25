@@ -1,14 +1,23 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.core.WorldHandler;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JPanel;
+
 public final class ChinaSchachKontrolle {
 
   private static ChinaSchachKontrolle instance;
+  private Spiel spiel;
 
-  private ChinaSchachKontrolle() {
+  private ChinaSchachKontrolle(Spiel spiel) {
     // TODO - implement ChinaSchachKontrolle.ChinaSchachKontrolle
+    this.spiel = spiel;
   }
 
-  public static ChinaSchachKontrolle getInstance() {
+  public static ChinaSchachKontrolle getInstance(Spiel spiel) {
     if (instance == null) {
-      instance = new ChinaSchachKontrolle();
+      instance = new ChinaSchachKontrolle(spiel);
     }
     return instance;
   }
@@ -25,7 +34,10 @@ public final class ChinaSchachKontrolle {
 
   public boolean prüfeMatt() {
     // TODO - implement ChinaSchachKontrolle.prüfeMatt
-    throw new UnsupportedOperationException();
+    if(spiel.getSpielfiguren()[30].istGeschlagen() || spiel.getSpielfiguren()[31].istGeschlagen()) {
+        return true;
+    }
+    return false;
   }
 }
 
