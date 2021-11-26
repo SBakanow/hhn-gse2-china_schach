@@ -1,9 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import greenfoot.core.WorldHandler;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import javax.swing.JPanel;
+import javax.swing.JOptionPane;
+import greenfoot.Greenfoot;
 
 public final class ChinaSchachKontrolle {
 
@@ -35,6 +31,19 @@ public final class ChinaSchachKontrolle {
   public boolean prüfeMatt() {
     // TODO - implement ChinaSchachKontrolle.prüfeMatt
     if(spiel.getSpielfiguren()[30].istGeschlagen() || spiel.getSpielfiguren()[31].istGeschlagen()) {
+        Greenfoot.playSound("Chinese-gong-sound.mp3");
+        if (spiel.getSpielfiguren()[30].istGeschlagen()) {
+            JOptionPane.showMessageDialog(null, 
+                              "Rot ist matt, Schwarz gewinnt!", 
+                              "Schachmatt", 
+                              JOptionPane.PLAIN_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, 
+                              "Schwarz ist matt, Rot gewinnt!", 
+                              "Schachmatt", 
+                              JOptionPane.PLAIN_MESSAGE);
+        }
+        
         return true;
     }
     return false;

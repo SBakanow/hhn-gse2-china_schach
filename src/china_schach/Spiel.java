@@ -88,6 +88,7 @@ public final class Spiel extends Actor {
 
     for (var spielfigur : dieSpielfiguren) {
       spielfigur.setPosition();
+      spielfigur.setIstGeschlagen();
     }
   }
 

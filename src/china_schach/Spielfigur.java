@@ -27,6 +27,10 @@ public abstract class Spielfigur extends Actor {
     public boolean istGeschlagen() {
         return geschlagen;
     }
+    
+    public void setIstGeschlagen(){
+        geschlagen = false;
+    }
 
     /**
      * @param schnittpunkte Ziel an dem die Spielfigur hin will.

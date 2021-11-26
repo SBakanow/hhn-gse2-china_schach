@@ -1,6 +1,4 @@
 import greenfoot.World;
-import greenfoot.core.WorldHandler;
-import javax.swing.JOptionPane;
 
 public final class Spielbrett extends World {
 
@@ -19,7 +17,6 @@ public final class Spielbrett extends World {
     prepare();
     spiel.konfiguriereSpiel();
   }
-
   
   public void act() {
     if(!ende) {
