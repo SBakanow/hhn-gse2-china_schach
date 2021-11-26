@@ -7,7 +7,7 @@ public abstract class Spielfigur extends Actor {
     protected Schnittpunkt position;
     protected int oldX;
     protected int oldY;
-    protected boolean geschlagen;
+    protected boolean geschlagen = false;
     protected static int geschlageneRoteSpieler;
     protected static int geschlageneSchwarzeSpieler;
 

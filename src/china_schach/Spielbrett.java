@@ -23,7 +23,11 @@ public final class Spielbrett extends World {
       ende = spiel.starten();
     }
   }
-
+  
+  public void stopped() {
+    spiel.beenden();
+  }
+  
   public Schnittpunkt getSchnittpunkt(int x, int y) {
     return dieSchnittpunkte[x][y];
   }

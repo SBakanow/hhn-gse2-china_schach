@@ -6,16 +6,19 @@ public final class ChinaSchachKontrolle {
   private static ChinaSchachKontrolle instance;
   private Spiel spiel;
 
-  private ChinaSchachKontrolle(Spiel spiel) {
+  private ChinaSchachKontrolle() {
     // TODO - implement ChinaSchachKontrolle.ChinaSchachKontrolle
-    this.spiel = spiel;
   }
 
-  public static ChinaSchachKontrolle getInstance(Spiel spiel) {
+  public static ChinaSchachKontrolle getInstance() {
     if (instance == null) {
-      instance = new ChinaSchachKontrolle(spiel);
+      instance = new ChinaSchachKontrolle();
     }
     return instance;
+  }
+  
+  public void setSpiel(Spiel spiel) {
+      this.spiel = spiel;
   }
 
   public boolean prüfePatt() {
@@ -43,7 +46,6 @@ public final class ChinaSchachKontrolle {
                               "Schachmatt", 
                               JOptionPane.PLAIN_MESSAGE);
         }
-        
         return true;
     }
     return false;

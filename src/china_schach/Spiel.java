@@ -15,32 +15,33 @@ public final class Spiel extends Actor {
 
   public Spiel(Spielbrett spielbrett) {
     dasSpielbrett = spielbrett;
+    kontrolle = ChinaSchachKontrolle.getInstance();
   }
 
   public boolean starten() {
-    spielstand = Spielstand.LAUFEND;
-    if (Greenfoot.mousePressed(null)) {
-      if (Greenfoot.getMouseInfo().getActor() instanceof Spielfigur) {
-        actor = (Spielfigur) Greenfoot.getMouseInfo().getActor();
-      }
-    }
-    if (actor != null) {
-      if (!actor.geschlagen) {
-        if (Greenfoot.mouseDragged(null) && actor.getFarbe() == farbe) {
-          //System.out.println(actor.geschlagen);
-          ((Actor) actor).setLocation(Greenfoot.getMouseInfo().getX(),
-              Greenfoot.getMouseInfo().getY());
-        }
-        if (Greenfoot.mouseDragEnded(null) && actor.getFarbe() == farbe) {
-          if (actor.bewegen(dasSpielbrett.getSchnittpunkte())) {
-            farbe = Farbe.ROT == farbe ? Farbe.SCHWARZ : Farbe.ROT;
-            Greenfoot.playSound("click.mp3");
-            actor = null;
+        spielstand = Spielstand.LAUFEND;
+        if (Greenfoot.mousePressed(null)) {
+          if (Greenfoot.getMouseInfo().getActor() instanceof Spielfigur) {
+            actor = (Spielfigur) Greenfoot.getMouseInfo().getActor();
           }
         }
-      }
-    }
-    return ChinaSchachKontrolle.getInstance(this).prüfeMatt();
+        if (actor != null) {
+          if (!actor.geschlagen) {
+            if (Greenfoot.mouseDragged(null) && actor.getFarbe() == farbe) {
+              //System.out.println(actor.geschlagen);
+              ((Actor) actor).setLocation(Greenfoot.getMouseInfo().getX(),
+                  Greenfoot.getMouseInfo().getY());
+            }
+            if (Greenfoot.mouseDragEnded(null) && actor.getFarbe() == farbe) {
+              if (actor.bewegen(dasSpielbrett.getSchnittpunkte())) {
+                farbe = Farbe.ROT == farbe ? Farbe.SCHWARZ : Farbe.ROT;
+                Greenfoot.playSound("click.mp3");
+                actor = null;
+              }
+            }
+          }
+        }
+        return ChinaSchachKontrolle.getInstance().prüfeMatt();
   }
 
   public Spielfigur[] getSpielfiguren() {
@@ -90,6 +91,8 @@ public final class Spiel extends Actor {
       spielfigur.setPosition();
       spielfigur.setIstGeschlagen();
     }
+    
+    kontrolle.setSpiel(this);
   }
 
   public void zurücksetzen() {
@@ -100,7 +103,6 @@ public final class Spiel extends Actor {
   public void beenden() {
     spielstand = Spielstand.BEENDET;
     // TODO - implement Spiel.beenden
-    throw new UnsupportedOperationException();
   }
 }
 
