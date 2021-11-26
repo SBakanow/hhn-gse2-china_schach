@@ -52,7 +52,8 @@ public abstract class Spielfigur extends Actor {
     }
 
     public boolean istKeinVerbündeter(Schnittpunkt ziel) {
-        return (ziel.getSpielfigur() == null || ziel.getSpielfigur().getFarbe() != farbe) && !(ziel.getSpielfigur() instanceof Kaiser);
+        return (ziel.getSpielfigur() == null 
+        || ziel.getSpielfigur().getFarbe() != farbe);
     }
 
     public void schlagen(Schnittpunkt ziel) {
@@ -71,6 +72,7 @@ public abstract class Spielfigur extends Actor {
             }
             ziel.getSpielfigur().geschlagen = true;
             ziel.getSpielfigur().setLocation(x, y);
+            Greenfoot.playSound("throw.mp3");
         }
     }
 }
