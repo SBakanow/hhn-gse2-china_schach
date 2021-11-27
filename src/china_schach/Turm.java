@@ -15,7 +15,7 @@ public final class Turm extends Spielfigur {
 
   public boolean bewegen(Schnittpunkt[][] schnittpunkte) {
     Schnittpunkt ziel = (Schnittpunkt) getOneIntersectingObject(Schnittpunkt.class);
-    if (ziel != null && istBewegungErlaubt(ziel) && istKeinVerbündeter(ziel) && istSpielfigurDazwischen(ziel, schnittpunkte)) {
+    if (ziel != null && istBewegungErlaubt(ziel) && istKeinVerbündeter(ziel) && istSpielfigurDazwischen(ziel, schnittpunkte) && kaiserPrüfung(ziel)) {
       setLocation(((Actor) ziel).getX(), ((Actor) ziel).getY());
       schlagen(ziel);
       setPosition();

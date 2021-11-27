@@ -17,6 +17,30 @@ public final class ChinaSchachKontrolle {
     return instance;
   }
   
+  public boolean prüfeKaiserSicht(Spielfigur figur, Schnittpunkt ziel) {
+      var kaiser1 = spiel.getSpielfiguren()[30];
+      var kaiser2 = spiel.getSpielfiguren()[31];
+      int spalteKaiser1 = kaiser1.getSchnittpunkt().getSpalte();
+      int spalteKaiser2 = kaiser2.getSchnittpunkt().getSpalte();
+      
+      if(spalteKaiser1 == spalteKaiser2 
+      && figur.getSchnittpunkt().getSpalte() == spalteKaiser1
+      && ziel.getSpalte() != spalteKaiser1) {
+          for(var position: spiel.getSchnittpunkte()[spalteKaiser1]) {
+              if(position.getSpielfigur() != null 
+                && !position.getSpielfigur().istGeschlagen()
+                && !(position.getSpielfigur() instanceof Kaiser)) {
+                      return true;
+              }
+          }
+          return false;
+      } else if (figur instanceof Kaiser && figur == kaiser1) {
+          
+          return false;
+      }
+      return true;
+  }
+    
   public void setSpiel(Spiel spiel) {
       this.spiel = spiel;
   }

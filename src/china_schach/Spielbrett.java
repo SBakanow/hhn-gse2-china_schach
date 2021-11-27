@@ -1,4 +1,5 @@
-import greenfoot.World;
+import greenfoot.*;
+import javax.swing.JOptionPane;
 
 public final class Spielbrett extends World {
 
@@ -15,12 +16,17 @@ public final class Spielbrett extends World {
     super(1400, 1000, 1);
     initSchnittpunkte();
     prepare();
-    spiel.konfiguriereSpiel();
   }
   
   public void act() {
     if(!ende) {
       ende = spiel.starten();
+    } else {
+        JOptionPane.showMessageDialog(null, 
+                              "Klicke auf den Reset Knopf um eine neue Partie zu starten.",
+                              "Spiel beendet",
+                              JOptionPane.PLAIN_MESSAGE);
+        Greenfoot.stop();
     }
   }
   
@@ -48,6 +54,7 @@ public final class Spielbrett extends World {
             y * scalingY + offsetY);
       }
     }
+    spiel.konfiguriereSpiel();
   }
 
   /**

@@ -24,6 +24,10 @@ public abstract class Spielfigur extends Actor {
         geschlageneSchwarzeSpieler = 0;
     }
     
+    public int getXPosition() {
+        return oldX;
+    }
+    
     public boolean istGeschlagen() {
         return geschlagen;
     }
@@ -32,6 +36,10 @@ public abstract class Spielfigur extends Actor {
         geschlagen = false;
     }
 
+    public Schnittpunkt getSchnittpunkt() {
+        return position;
+    }
+    
     /**
      * @param schnittpunkte Ziel an dem die Spielfigur hin will.
      */
@@ -58,6 +66,10 @@ public abstract class Spielfigur extends Actor {
     public boolean istKeinVerbündeter(Schnittpunkt ziel) {
         return (ziel.getSpielfigur() == null 
         || ziel.getSpielfigur().getFarbe() != farbe);
+    }
+    
+    public boolean kaiserPrüfung(Schnittpunkt ziel) {
+        return ChinaSchachKontrolle.getInstance().prüfeKaiserSicht(this, ziel);
     }
 
     public void schlagen(Schnittpunkt ziel) {

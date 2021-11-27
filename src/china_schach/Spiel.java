@@ -47,6 +47,10 @@ public final class Spiel extends Actor {
   public Spielfigur[] getSpielfiguren() {
     return dieSpielfiguren;
   }
+  
+  public Schnittpunkt[][] getSchnittpunkte() {
+      return dasSpielbrett.getSchnittpunkte();
+  }
 
   public void konfiguriereSpiel() {
     spielstand = Spielstand.KONFIGURIERT;
