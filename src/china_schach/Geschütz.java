@@ -28,36 +28,37 @@ public final class Geschütz extends Spielfigur {
 
   private boolean istBewegungErlaubt(final Schnittpunkt ziel, final Schnittpunkt[][] schnittpunkt) {
     if ((position.getZeile() == ziel.getZeile() ^ position.getSpalte() == ziel.getSpalte())
-            && !istSpielfigurDazwischen(ziel, schnittpunkt) && ziel.getSpielfigur() == null) {
+            && SpielfigurenDazwischen(ziel, schnittpunkt) == 0 && ziel.getSpielfigur() == null) {
       return true;
     } else {
       return (position.getZeile() != ziel.getZeile() ^ position.getSpalte() != ziel.getSpalte())
-            && (ziel.getSpielfigur() != null && istKeinVerbündeter(ziel)) && istSpielfigurDazwischen(ziel, schnittpunkt);
+            && (ziel.getSpielfigur() != null && istKeinVerbündeter(ziel)) && SpielfigurenDazwischen(ziel, schnittpunkt) == 1;
     }
   }
 
-  private boolean istSpielfigurDazwischen(final Schnittpunkt ziel, final Schnittpunkt[][] schnittpunkte) {
+  private int SpielfigurenDazwischen(final Schnittpunkt ziel, final Schnittpunkt[][] schnittpunkte) {
     int dif = ziel.getZeile() - position.getZeile();
+    int figurenAnzahl = 0;
     if (dif == 0) {
       //Vertical
       dif = ziel.getSpalte() - position.getSpalte();
       for (int i = 1; i < Math.abs(dif); i++) {
         if (dif < 0 && schnittpunkte[position.getSpalte() - i][ziel.getZeile()].getSpielfigur() != null) {
-            return true;
+          figurenAnzahl++;
         } else if(dif > 0 && schnittpunkte[position.getSpalte() + i][ziel.getZeile()].getSpielfigur() != null) {
-            return true;
+          figurenAnzahl++;
         }
       }
       //Horizontal
     } else {
       for (int i = 1; i < Math.abs(dif); i++) {
         if (dif < 0 && schnittpunkte[ziel.getSpalte()][position.getZeile() - i].getSpielfigur() != null) {
-          return true;
+          figurenAnzahl++;
         } else if (dif > 0 && schnittpunkte[ziel.getSpalte()][position.getZeile() + i].getSpielfigur() != null) {
-          return true;
+          figurenAnzahl++;
         }
       }
     }
-    return false;
+    return figurenAnzahl;
   }
 }
