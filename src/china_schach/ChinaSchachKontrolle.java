@@ -22,20 +22,34 @@ public final class ChinaSchachKontrolle {
       var kaiser2 = spiel.getSpielfiguren()[31];
       int spalteKaiser1 = kaiser1.getSchnittpunkt().getSpalte();
       int spalteKaiser2 = kaiser2.getSchnittpunkt().getSpalte();
+      int zeileKaiser1 = kaiser1.getSchnittpunkt().getZeile();
+      int zeileKaiser2 = kaiser2.getSchnittpunkt().getZeile();
       
       if(spalteKaiser1 == spalteKaiser2 
       && figur.getSchnittpunkt().getSpalte() == spalteKaiser1
-      && ziel.getSpalte() != spalteKaiser1) {
+      && ziel.getSpalte() != spalteKaiser1
+      && !(figur instanceof Kaiser)) {
           for(var position: spiel.getSchnittpunkte()[spalteKaiser1]) {
               if(position.getSpielfigur() != null 
                 && !position.getSpielfigur().istGeschlagen()
-                && !(position.getSpielfigur() instanceof Kaiser)) {
+                && !(position.getSpielfigur() instanceof Kaiser)
+                && figur != position.getSpielfigur()
+                && (position.getZeile() < zeileKaiser1 && position.getZeile() > zeileKaiser2)) {
                       return true;
               }
           }
           return false;
-      } else if (figur instanceof Kaiser && figur == kaiser1) {
-          
+      } else if (figur instanceof Kaiser 
+          && ((ziel.getSpalte() == spalteKaiser1 && figur != kaiser1) 
+          || (ziel.getSpalte() == spalteKaiser2 && figur != kaiser2))) {
+          for(var position: spiel.getSchnittpunkte()[ziel.getSpalte()]) {
+              if(position.getSpielfigur() != null 
+                && !position.getSpielfigur().istGeschlagen()
+                && !(position.getSpielfigur() instanceof Kaiser)
+                && (position.getZeile() < zeileKaiser1 && position.getZeile() > zeileKaiser2)) {
+                      return true;
+              }
+          }
           return false;
       }
       return true;
