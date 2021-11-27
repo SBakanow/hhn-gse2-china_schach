@@ -37,6 +37,8 @@ public final class Spiel extends Actor {
                 farbe = Farbe.ROT == farbe ? Farbe.SCHWARZ : Farbe.ROT;
                 Greenfoot.playSound("click.mp3");
                 actor = null;
+              } else {
+                  Greenfoot.playSound("ErrorSound.mp3");
               }
             }
           }
